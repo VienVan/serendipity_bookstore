@@ -5,9 +5,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-class Book
+struct Book
 {
-private:
 	string author;
 	string title;
 	string isbn;
@@ -16,7 +15,6 @@ private:
 	int quantity;
 	double wholesale;
 	double retail;
-public:
 	Book();
 	Book(string a, string t, string i, string p, int d, int m, int y, int q, double w, double r);
 	friend ostream& operator<< (ostream &out, const Book &thi);
