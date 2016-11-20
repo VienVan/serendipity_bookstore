@@ -8,20 +8,20 @@ using namespace std;
 Book::Book(){
 	author = "";       //Set all of these to default values. Make sure that they do not mess up sorting operations, etc.
 	title = "";
-	ISBN = "";
+	ISBN = 0;
 	publisher = "";
-	date = "";
-	quantity = "";
-	wholesale = "";
-	retail = "";
+	date = setDate(1, 1, 1900);
+	quantity = 0;
+	wholesale = 0.0;
+	retail = 0.0;
 }
-Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, double w, double r)
+Book::Book(string a, string t, long i, string p, int d, int m, int y, int q, double w, double r)
 {
 	author = a;
 	title = t;
 	ISBN = i;
 	publisher = p;
-	date = Date(m, d, y);
+	date = setDate(m, d, y);
 	quantity = q;
 	wholesale = w;
 	retail = r;
