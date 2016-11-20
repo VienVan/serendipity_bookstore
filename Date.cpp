@@ -45,6 +45,19 @@ bool operator<=(const Date &thi, const Date &tha)
 
 ostream& operator<<(ostream& out, const Date&thi)
 {
-	out << thi.month << "/" << thi.day << "/" << thi.year;
+	(thi.month < 10) ? (out << '0' << thi.month) : (out << thi.month);
+	out << '/';
+	(thi.day < 10) ? (out << '0' << thi.day) : (out << thi.day);
+	out << '/' << thi.year;
 	return out;
+}
+cout << date;
+cin >> date;
+
+istream &operator>>(istream &in, const Date &thi) {
+	in.getline(thi.month, 2, '/');
+	in.getline(thi.day, 2, '/');
+	in.ignore(); //To avoid an error
+	in >> thi.year;
+	return in;
 }
