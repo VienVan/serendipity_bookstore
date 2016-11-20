@@ -34,7 +34,7 @@ ostream& operator<<(ostream& out, const Book &thi)
 	return out;
 }
 
-istream& operator<<(istream& in, const Book&thi)
+istream& operator>>(istream& in, const Book&thi)
 {
 	//This requires that the read position start at the beginning of a book
 	in.ignore();
