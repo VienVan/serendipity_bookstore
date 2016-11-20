@@ -5,19 +5,22 @@
 #include <iostream>
 #include <string>
 using namespace std;
-struct Book
+class Book
 {
+private:
 	string author;
 	string title;
-	string isbn;
+	string ISBN;
 	string publisher;
 	Date date;
 	int quantity;
 	double wholesale;
 	double retail;
-	Book();
-	Book(string a, string t, string i, string p, int d, int m, int y, int q, double w, double r);
-	friend ostream& operator<< (ostream &out, const Book &thi);
+public:
+Book();
+Book(string a, string t, string i, string p, int d, int m, int y, int q, double w, double r);
+friend ostream& operator<< (ostream &out, const Book &thi);
+friend istream& operator>> (istream &in, const Book &thi);
 };
 
 
