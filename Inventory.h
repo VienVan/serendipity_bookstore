@@ -13,7 +13,7 @@ private:
 	Book inv[1024];
 public:
 	Inventory(string filename, double markup);
-	void pullInventoryFromFile(string filename);
+	void pullInventoryFromFile(string, Book []);
 	void sortInventoryByQuantity();
 	void sortInventoryByCost();
 	void sortInventoryByDate();
