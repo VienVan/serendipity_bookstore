@@ -8,24 +8,13 @@
 
 using namespace std;
 
-Inventory::Inventory(string filename, double markup)
-{
-	for (int x = 0; x < SIZE; x++)
-	{
-		inv[x] = Book("me", "how to not suck at programming", "9999999999999", "generic publisher", 15, 11, 2016, 1, 19.99, 19.99*markup);
-	}
-}
-Inventory::~Inventory()
-{
-}
-
-void Inventory::pullInventoryFromFile(string filename, Book inventory[]){
+Inventory::Inventory(string filename, Book inventory[]) {
 	ifstream inputFile(filename);
 	for (int count = 0; count < 1024 && inputFile >> inventory[count]; ++count);
 	inputFile.close();
 }
 
-void Inventory::sortInventoryByQuantity(Book inventory[], const int size){
+void Inventory::sortInventoryByQuantity(Book inventory[], const int size) {
 	int pos_min, temp;
 	for (int i = 0; i < n - 1; i++) {
 	    pos_min = i;
@@ -41,7 +30,7 @@ void Inventory::sortInventoryByQuantity(Book inventory[], const int size){
 	}
 }
 
-void Inventory::sortInventoryByCost(Book inventory[], const int size){ 
+void Inventory::sortInventoryByCost(Book inventory[], const int size) { 
 	int pos_min, temp;
 	for (int i = 0; i < n - 1; i++) {
 	    pos_min = i;
@@ -56,7 +45,7 @@ void Inventory::sortInventoryByCost(Book inventory[], const int size){
             }
 	}
 }
-void Inventory::sortInventoryByDate(Book inventory[], const int size){
+void Inventory::sortInventoryByDate(Book inventory[], const int size) {
 	int pos_min, temp;
 	for (int i = 0; i < n - 1; i++) {
 	    pos_min = i;
@@ -77,27 +66,15 @@ void Inventory::reverseOrder(Book inventory[], const int size) {
 	inventory[i] = inventory[size - i];
 }
 
-void Inventory::displayBookDetails(Book th) {
-	cout << left;
-	cout << setw(15) << "Book Title:" << th.getTitle() << endl;
-	cout << setw(15) << "Author:" << th.getAuthor() << endl;
-	cout << setw(15) << "Publisher:" << th.getPublisher() << endl;
-	cout << setw(15) << "ISBN:" << th.getISBN() << endl;
-	cout << setw(15) << "Quantity-on-hand:" << th.getQuantity() << endl;
-	cout << setw(15) << "Date added:" << th.Date << endl;
-	cout << setw(15) << "Wholesale cost:" << th.getWholesale() << endl;
-	cout << setw(15) << "Retail price:" << th.getRetail() << endl;
-}
-
 void Inventory::modify(Book inventory[]) {
 	int index;
 	char selection;
 	cout << "Please enter the number of the book you want to modify:\n";
 	cin >> index--;
-	cout << "Please select which of the following you would like to modify:\nA: Title\nB: Author\nC: Publisher\nD: ISBN\nE: Date\n F: Quantity\nG: Wholesale Cost\nH: Retail Cost\n";
-	cin >> selection;
-	cin.ignore();
 	do {
+		cout << "Please select which of the following you would like to modify:\nA: Title\nB: Author\nC: Publisher\nD: ISBN\nE: Date\n F: Quantity\nG: Wholesale Cost\nH: Retail Cost\n";
+		cin >> selection;
+		cin.ignore();
 		switch(toupper(selection)) {
 			case 'A': string modify;
 				"Please enter the new title. Press tab once you are done\n";
@@ -137,8 +114,7 @@ void Inventory::modify(Book inventory[]) {
 				cin >> modify;
 				inventory[inex].setRetail(modify);
 				break;
-			default: 
-				selection = 0;
+			default: selection = 0;
 		}
 	} while (selection == 0};
 		
@@ -149,11 +125,12 @@ void Inventory::view(Book inventory[]) {
 	char selection;
 	cout << "Please enter the number of the book you want to view:\n";
 	cin >> index--;
-	cout << "Please select which of the following you would like to view:\nA: Title\nB: Author\nC: Publisher\nD: ISBN\nE: Date\n F: Quantity\nG: Wholesale Cost\nH: Retail Cost\n";
-	cin >> selection;
-	cin.ignore();
 	do {
-		switch(toupper(selection)) {
+		cout << "Please select which of the following you would like to view:\nA: Title\nB: Author\nC: Publisher\nD: ISBN\nE: Date\n F: Quantity\nG: Wholesale Cost\nH: Retail Cost\n";
+		cin >> selection;
+		cin.ignore();
+		switch(toupper(selection)) 
+		{
 			case 'A': cout << inventory[index].getTitle();
 				break;
 			case 'B': cout << inventory[index].getAuthor();
@@ -170,11 +147,9 @@ void Inventory::view(Book inventory[]) {
 				break;
 			case 'H': cout << inventory[index].setRetail();
 				break;
-			default: 
-				selection = 0;
+			default: selection = 0;
 		}
-	} while (selection == 0};
-		
+	} while (selection == 0};		
 }
 		 
 void Inventory::deleteBook(Book inventory[], int index, const int size) {
@@ -184,12 +159,11 @@ void Inventory::deleteBook(Book inventory[], int index, const int size) {
 
 void Inventory::addBook(Book inventory[], const int size) {
 	Book temp;
-	cout << "Please enter the title of the book: \n";
-	cin >> 
+	if (!inventory[size]); {
 	cout << "Please enter, in order: the title of the book, name of the author, ISBN, publisher, date added, quantity, wholesale cost, and retail value of the book: ";
 	cin >> inventory[size];
-}
-
-Book *getInventory() {
-	return inv;
+	}
+	else {
+		cout << "Sorry, there are too many books already in the inventory.\n";
+	}
 }
