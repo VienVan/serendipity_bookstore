@@ -29,13 +29,24 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 
 ostream& operator<<(ostream& out, const Book &thi)
 {
-	out << thi.author << ' ' << thi.title << ' ' << thi.ISBN << ' ' << thi.publisher << ' ' << thi.date << ' ' << thi.quantity << ' ' << thi.wholesale << ' ' << thi.retail << endl;
+	out << thi.author << '\t' << thi.title << '\t' << thi.ISBN << '\t' << thi.publisher << '\t' << thi.date << '\t' << thi.quantity << '\t' << thi.wholesale << '\t' << thi.retail << '\n';
+	//Tab marks end of field; Newline marks end of book
 	return out;
 }
 
 istream& operator<<(istream& in, const Book&thi)
 {
 	//This requires that the read position start at the beginning of a book
-	in >> thi.author >> thi.title >> thi.ISBN >> thi.publisher >> thi.date >> thi.quantity >> thi.wholesale >> thi.retail;
+	in.ignore();
+	getline(in, thi.author, 1024, '\t');
+	getline(in, thi.author, 1024, '\t');
+	getline(in, thi.title, 1024, '\t');		
+	getline(in, thi.ISBN, 1024, '\t');
+	getline(in, thi.publisher, 1024, '\t');
+	getline(in, thi.date, 1024, '\t');
+	getline(in, thi.quantity, 1024, '\t');
+	getline(in, thi.wholesale, 1024, '\t');
+	getline(in, thi.retail, 1024, '\n');
+	//Using getline because tab is our limiting character
 	return in;
 }
