@@ -25,7 +25,50 @@ void Inventory::pullInventoryFromFile(string filename, Book inventory[]){
 	inputFile.close();
 }
 
-void Inventory::sortInventoryByQuantity(){}
-void Inventory::sortInventoryByCost(){}
-void Inventory::sortInventoryByDate(){}
+void Inventory::sortInventoryByQuantity(Book inventory[], const int size){
+	int pos_min, temp;
+	for (int i = 0; i < n - 1; i++) {
+	    pos_min = i;
+		for (int j = i + 1; j < n; j++) {
+		if (inventory[j].getQuantity() < inventory[pos_min].getQuantity())
+                   pos_min = j;
+		}
+            if (pos_min != i) {
+                 temp = inventory[i].getQuantity();
+                 inventory[i].setQuantity(inventory[pos_min].getQuantity());
+                 inventory[pos_min].setQuantity(temp);
+            }
+	}
+}
+
+void Inventory::sortInventoryByCost(Book inventory[], const int size){  //By Wholesale or retail?
+	int pos_min, temp;
+	for (int i = 0; i < n - 1; i++) {
+	    pos_min = i;
+		for (int j = i + 1; j < n; j++) {
+		if (inventory[j].getQuantity() < inventory[pos_min].getQuantity())
+                   pos_min = j;
+		}
+            if (pos_min != i) {
+                 temp = inventory[i].getQuantity();
+                 inventory[i].setQuantity(inventory[pos_min].getQuantity());
+                 inventory[pos_min].setQuantity(temp);
+            }
+	}
+}
+void Inventory::sortInventoryByDate(Book inventory[], const int size){
+	int pos_min, temp;
+	for (int i = 0; i < n - 1; i++) {
+	    pos_min = i;
+		for (int j = i + 1; j < n; j++) {
+		if (inventory[j].getDate() < inventory[pos_min].getDate())
+                   pos_min = j;
+		}
+            if (pos_min != i) {
+                 temp = inventory[i].getDate();
+                 inventory[i].setDate(inventory[pos_min].getDate());
+                 inventory[pos_min].setDate(temp);
+            }
+	}
+}
 Book * Inventory::getInventory(){ return inv; }
