@@ -19,7 +19,12 @@ Inventory::~Inventory()
 {
 }
 
-void Inventory::pullInventoryFromFile(string filename){}
+void Inventory::pullInventoryFromFile(string filename, Book inventory[]){
+	ifstream inputFile(filename);
+	for (int count = 0; count < 1024 && inputFile >> inventory[count]; ++count);
+	inputFile.close();
+}
+
 void Inventory::sortInventoryByQuantity(){}
 void Inventory::sortInventoryByCost(){}
 void Inventory::sortInventoryByDate(){}
