@@ -29,7 +29,7 @@ Book::Book(string a, string t, long i, string p, int d, int m, int y, int q, dou
 
 ostream& operator<<(ostream& out, const Book &thi)
 {
-	out << thi.author << '\t' << thi.title << '\t' << thi.ISBN << '\t' << thi.publisher << '\t' << thi.date << '\t' << thi.quantity << '\t' << thi.wholesale << '\t' << thi.retail << '\n';
+	out << thi.title << '\t' << thi.author << '\t' << thi.ISBN << '\t' << thi.publisher << '\t' << thi.date << '\t' << thi.quantity << '\t' << thi.wholesale << '\t' << thi.retail << '\n';
 	//Tab marks end of field; Newline marks end of book
 	return out;
 }
@@ -38,12 +38,11 @@ istream& operator>>(istream& in, const Book&thi)
 {
 	//This requires that the read position start at the beginning of a book
 	in.ignore();
-	getline(in, thi.author, 1024, '\t');
-	getline(in, thi.author, 1024, '\t');
-	getline(in, thi.title, 1024, '\t');		
-	getline(in, thi.ISBN, 1024, '\t');
+	getline(in, thi.title, 1024, '\t');
+	getline(in, thi.author, 1024, '\t');		
+	getline(in, thi.ISBN, 13, '\t');
 	getline(in, thi.publisher, 1024, '\t');
-	getline(in, thi.date, 1024, '\t');
+	getline(in, thi.date, 10, '\t');
 	getline(in, thi.quantity, 1024, '\t');
 	getline(in, thi.wholesale, 1024, '\t');
 	getline(in, thi.retail, 1024, '\n');
