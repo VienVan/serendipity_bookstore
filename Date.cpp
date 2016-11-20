@@ -51,13 +51,11 @@ ostream& operator<<(ostream& out, const Date&thi)
 	out << '/' << thi.year;
 	return out;
 }
-cout << date;
-cin >> date;
 
 istream &operator>>(istream &in, const Date &thi) {
-	in.getline(thi.month, 2, '/');
-	in.getline(thi.day, 2, '/');
-	in.ignore(); //To avoid an error
+	in.ignore();
+	getline(in, thi.month, 2, '/');
+	getline(in, thi.day, 2, '/');
 	in >> thi.year;
 	return in;
 }
