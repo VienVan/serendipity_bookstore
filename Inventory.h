@@ -20,7 +20,7 @@ public:
 	void Inventory::view(Book []);
 	void Inventory::deleteBook(Book [], int, const int);
 	void Inventory::addBook(Book [], const int);
-	Book *getInventory();
+	Book *getInventory() { return inv; }
 };
 
 #endif
