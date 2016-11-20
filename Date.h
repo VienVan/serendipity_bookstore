@@ -11,7 +11,8 @@ protected:
 	int year;
 public:
 	Date(){}
-	Date(int m, int d, int y);
+	Date(int m, int d, int y) { setDate(m, d, y); }
+	void setDate(int, int, int);
 	int getDay() const;
 	int getMonth() const;
 	int getYear() const;
