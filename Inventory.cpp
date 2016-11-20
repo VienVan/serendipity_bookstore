@@ -188,5 +188,5 @@ void Inventory::addBook(Book inventory[], const int size) {
 }
 
 Book *getInventory() {
-	return inventory;
+	return inv;
 }
