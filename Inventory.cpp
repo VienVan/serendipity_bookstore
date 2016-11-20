@@ -178,11 +178,14 @@ void Inventory::view(Book inventory[]) {
 }
 		 
 void Inventory::deleteBook(Book inventory[], int index, const int size) {
-	while (index < size) {
+	while (index < size - 1) {
 		Book[i] = Book[++i];
 }
 
 void Inventory::addBook(Book inventory[], const int size) {
+	Book temp;
+	cout << "Please enter the title of the book: \n";
+	cin >> 
 	cout << "Please enter, in order: the title of the book, name of the author, ISBN, publisher, date added, quantity, wholesale cost, and retail value of the book: ";
 	cin >> inventory[size];
 }
