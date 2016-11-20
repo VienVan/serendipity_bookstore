@@ -12,13 +12,15 @@ private:
 	const int SIZE = 1024;
 	Book inv[1024];
 public:
-	Inventory(string filename, double markup);
-	void pullInventoryFromFile(string, Book []);
-	void sortInventoryByQuantity();
-	void sortInventoryByCost();
-	void sortInventoryByDate();
-	Book * getInventory();
-	~Inventory();
+	void Inventory::pullInventoryFromFile(string, Book []);
+	void Inventory::sortInventoryByQuantity(Book [], const int);
+	void Inventory::sortInventoryByCost(Book [], const int);
+	void Inventory::sortInventoryByDate(Book [], const int);
+	void Inventory::modify(Book []);
+	void Inventory::view(Book []);
+	void Inventory::deleteBook(Book [], int, const int);
+	void Inventory::addBook(Book [], const int);
+	Book *getInventory();
 };
 
 #endif
