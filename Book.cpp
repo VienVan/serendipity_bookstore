@@ -1,7 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "Date.h"
 #include "Book.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 
