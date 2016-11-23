@@ -70,7 +70,8 @@ void Inventory::modify(Book inventory[]) {
 	int index;
 	char selection;
 	cout << "Please enter the number of the book you want to modify:\n";
-	cin >> index--;
+	cin >> index;
+	index--;
 	do {
 		cout << "Please select which of the following you would like to modify:\nA: Title\nB: Author\nC: Publisher\nD: ISBN\nE: Date\n F: Quantity\nG: Wholesale Cost\nH: Retail Cost\n";
 		cin >> selection;
@@ -96,7 +97,7 @@ void Inventory::modify(Book inventory[]) {
 				cin >> modify;
 				inventory[index].setISBN(modify);
 				break;
-			case 'E':
+			case 'E': //Contingent upon Date class feautures
 			
 				break;
 			case 'F': int modify;
@@ -107,12 +108,12 @@ void Inventory::modify(Book inventory[]) {
 			case 'G': double modify;
 				cout << "Please enter the updated cost:\n";
 				cin >> modify;
-				inventory[inex].setWholesale(modify);
+				inventory[index].setWholesale(modify);
 				break;
 			case 'H': double modify;
 				cout << "Please enter the updated price:\n";
 				cin >> modify;
-				inventory[inex].setRetail(modify);
+				inventory[index].setRetail(modify);
 				break;
 			default: selection = 0;
 		}
@@ -124,7 +125,8 @@ void Inventory::view(Book inventory[]) {
 	int index;
 	char selection;
 	cout << "Please enter the number of the book you want to view:\n";
-	cin >> index--;
+	cin >> index;
+	index--;
 	do {
 		cout << "Please select which of the following you would like to view:\nA: Title\nB: Author\nC: Publisher\nD: ISBN\nE: Date\n F: Quantity\nG: Wholesale Cost\nH: Retail Cost\n";
 		cin >> selection;
@@ -139,7 +141,7 @@ void Inventory::view(Book inventory[]) {
 				break;
 			case 'D': cout << inventory[index].getISBN(modify);
 				break;
-			case 'E': cout << inventory[index.getDate()];
+			case 'E': cout << inventory[index].getDate();
 				break;
 			case 'F': cout << inventory[index].getQuantity();
 				break;
@@ -152,8 +154,12 @@ void Inventory::view(Book inventory[]) {
 	} while (selection == 0};		
 }
 		 
-void Inventory::deleteBook(Book inventory[], int index, const int size) {
-	while (index < size - 1) {
+void Inventory::deleteBook(Book inventory[]) {
+	int index;
+	cout << "Please enter the number of the book you want to delete:\n";
+	cin >> index;
+	index--;
+		while (index < SIZE - 1) {
 		Book[i] = Book[++i];
 }
 
