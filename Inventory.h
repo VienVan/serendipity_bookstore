@@ -10,7 +10,7 @@ class Inventory
 {
 private:
 	const int SIZE = 1024;
-	Book inv[1024];
+	Book inv[SIZE];
 public:
 	void Inventory::pullInventoryFromFile(string, Book []);
 	void Inventory::sortInventoryByQuantity(Book [], const int);
