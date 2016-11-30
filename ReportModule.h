@@ -8,6 +8,7 @@ class ReportModule : public Module
 {
 	void UserInteraction();
 
+
 };
 
 #endif
