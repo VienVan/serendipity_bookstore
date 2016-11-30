@@ -8,7 +8,12 @@ int Date::getDay() const { return day; }
 int Date::getMonth() const { return month; }
 int Date::getYear() const { return year; }
 
-Date::setDate(int m, int d, int y) : day(d), month(m), year(y){}
+Date::setDate(int m, int d, int y)
+{
+	day = d;
+	month = m;
+	year = y;
+}
 
 bool operator==(const Date &thi, const Date &tha)
 {
@@ -25,7 +30,7 @@ bool operator>(const Date &thi, const Date &tha)
 	if (thi.year != tha.year)
 		return thi.year > tha.year;
 	else if (thi.month != tha.month)
-		return thi.month > tha.month; 
+		return thi.month > tha.month;
 	else if (thi.day != tha.day)
 		return thi.day > tha.day;
 	return false;

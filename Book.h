@@ -35,6 +35,7 @@ public:
 	void setQuantity(int q) { quantity = q; }
 	void setWholesale(double w) { wholesale = w; }
 	void setRetail(double r) { retail = r; }
+	void setPublisher(String p) { publisher = p;}
 };
 
 

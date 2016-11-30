@@ -42,7 +42,7 @@ istream& operator>>(istream& in, const Book&thi)
 	//This requires that the read position start at the beginning of a book
 	in.ignore();
 	getline(in, thi.title, 1024, '\t');
-	getline(in, thi.author, 1024, '\t');		
+	getline(in, thi.author, 1024, '\t');
 	getline(in, thi.ISBN, 13, '\t');
 	getline(in, thi.publisher, 1024, '\t');
 	getline(in, thi.date, 10, '\t');
