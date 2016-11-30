@@ -4,7 +4,7 @@
 class Module
 {
 protected:
-	const double SALESTAX = 0.0875;
+	const double SALESTAX = 1.0875;
 	const double WHOLESALEMARKUP = 1.3;
 public:
 	virtual void UserInteraction() = 0;
