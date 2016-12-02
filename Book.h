@@ -10,7 +10,7 @@ class Book
 private:
 	string author;
 	string title;
-	long ISBN;
+	string ISBN;
 	string publisher;
 	Date date;
 	int quantity;
@@ -31,11 +31,11 @@ public:
 	double getRetail() { return retail; }
 	void setAuthor(string a) { author = a; }
 	void setTitle(string t) { title = t; }
-	void setISBN(long i) { ISBN = i; }
+	void setISBN(string i) { ISBN = i; }
 	void setQuantity(int q) { quantity = q; }
 	void setWholesale(double w) { wholesale = w; }
 	void setRetail(double r) { retail = r; }
-	void setPublisher(String p) { publisher = p;}
+	void setPublisher(string p) { publisher = p;}
 };
 
 
