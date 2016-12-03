@@ -8,7 +8,7 @@ using namespace std;
 
 class Inventory
 {
-private:
+/*private:
 	const int SIZE = 1024;
 	Book inv[1024];
 
@@ -24,6 +24,6 @@ public:
 	void Inventory::reverseOrder(Book inventory[], const int size);
 	Book *getInventory() { return inv; }
 	//read books first, then destructor kill the array//
-};
+*/};
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef _CASHIERMODULE_H
-#define _CASHIERMODULE_H
+#ifndef _CONTROLMODULE_H
+#define _CONTROLMODULE_H
 
 #include "Book.h"
 #include "Inventory.h"
@@ -10,7 +10,7 @@
 class ControlModule : public Module
 {
 private:
-    CashierModule * cm = new CashierModule;
+    CashierModule * cm;
     ReportModule *rm;
     InventoryDatabaseModule *im;
     Inventory *I;
