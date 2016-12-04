@@ -15,7 +15,7 @@ private:
     ReportModule *rm;
     InventoryDatabaseModule *im;
 public:
-    ControlModule();
+    ControlModule(string);
     ~ControlModule();
 	void userInteraction();
 
