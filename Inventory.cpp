@@ -96,7 +96,7 @@ void Inventory::sortInventoryByDate() {
     for (int i = 0; i < SIZE - 1; i++) {
         pos_min = i;
         for (int j = i + 1; j < SIZE; j++) {
-            if (inventory[j]->getDate() > inventory[pos_min]->getDate())
+            if (inventory[j]->getDate() < inventory[pos_min]->getDate())
                 pos_min = j;
         }
         if (pos_min != i) {
