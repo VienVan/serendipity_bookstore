@@ -15,7 +15,7 @@ private:
     int currentSize;
 
 public:
-    Inventory();
+    Inventory(string);
     ~Inventory();
 	void pullInventoryFromFile(string);
 	void sortInventoryByQuantity();
