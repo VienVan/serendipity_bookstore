@@ -12,12 +12,12 @@ using namespace std;
 //Definition of Inventory Class Default Constructor                            *
 //The constructor takes no arguments and pulls an inventory from a file        *
 //******************************************************************************
-Inventory::Inventory() {
+Inventory::Inventory(string filepath) {
     currentSize = 0;
     for (int i = 0; i < SIZE; ++i) {
-        inventory[i] = new Book;
+       	inventory[i] = new Book;
     }
-    pullInventoryFromFile("books.txt");
+    pullInventoryFromFile(filepath);
 }
 
 //******************************************************************************
