@@ -14,9 +14,9 @@ void ControlModule::userInteraction()
 		cin >> choice;
 		switch(choice)
 		{
-		    case 1: { cm.userInteraction(); }
-		    case 2: { im.userInteraction(); }
-		    case 3: { rm.userInteraction(); }
+		    case 1: { cm->userInteraction(); }
+		    case 2: { im->userInteraction(); }
+		    case 3: { rm->userInteraction(); }
 		}
 	} while (choice != 4);
 }

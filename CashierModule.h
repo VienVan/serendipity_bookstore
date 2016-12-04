@@ -6,8 +6,17 @@
 #include "Module.h"
 class CashierModule : public Module
 {
+private:
+    int quantity;
+    string title;
+
 public:
-	void userInteraction();
+    CashierModule(Inventory *i) : Module(i){};
+    CashierModule();
+    void userInteraction();
+    double getTotal();
+    bool isBookThere(Inventory *i);
+    int searchBook(Inventory *i, string t);
 };
 
 #endif

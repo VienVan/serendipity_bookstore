@@ -7,8 +7,7 @@
 class ReportModule : public Module
 {
 	void userInteraction();
-
-
+	ReportModule(Inventory * i) : Module(i) {};
 };
 
 #endif

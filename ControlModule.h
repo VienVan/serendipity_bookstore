@@ -11,9 +11,9 @@ class ControlModule : public Module
 {
 private:
     Inventory * I;
-    CashierModule cm;
-    ReportModule rm;
-    InventoryDatabaseModule im;
+    CashierModule * cm;
+    ReportModule * rm;
+    InventoryDatabaseModule * im;
 public:
     ControlModule();
     ~ControlModule();
@@ -22,4 +22,3 @@ public:
 };
 
 #endif
-
