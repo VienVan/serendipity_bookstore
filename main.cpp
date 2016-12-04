@@ -9,6 +9,8 @@ using namespace std;
 
 int main()
 {
+     cout << "Please enter the path to the inventory file:\n";
+     cin >> filepath;
     Module *runner = new ControlModule();
     runner->userInteraction();
     delete runner;
