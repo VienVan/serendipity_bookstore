@@ -7,20 +7,11 @@
 
 using namespace std;
 
-void CashierModule::UuserInteraction()
+void CashierModule::userInteraction()
 {
-  cout << "Book Title: " << endl;
-  cin  >> title;
-  cout << "Quantity: " << endl;
-  cin  >> quantity;
-}
-
-double CashierModule::getSalesTax()
-{
-    return SALESTAX;
 }
 
 void CashierModule::deleteBookFromInventory()
 {
-  book.quantity -= quantity;
+
 }

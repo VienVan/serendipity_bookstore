@@ -7,8 +7,13 @@
 class InventoryDatabaseModule : public Module
 {
 public:
-	void userInteraction();
 	InventoryDatabaseModule(Inventory * i) : Module(i){}
+	void userInteraction();
+	void lookUpBook();
+	void addBook();
+	void deleteBook();
+	void editBook();
 };
 
 #endif
+

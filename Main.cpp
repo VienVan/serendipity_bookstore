@@ -9,9 +9,9 @@ using namespace std;
 
 int main()
 {
-    ControlModule runner = ControlModule();
-    runner.userInteraction();
-	cin.ignore();
-	cin.get();
+    ControlModule * runner = new ControlModule();
+    runner->userInteraction();
+    delete runner;
+    runner = nullptr;
 	return 0;
 }

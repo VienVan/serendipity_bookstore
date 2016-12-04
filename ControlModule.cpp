@@ -10,29 +10,33 @@ void ControlModule::userInteraction()
              << "2. Inventory Database Module" << endl
              << "3. Report Module" << endl
              << "4. Exit" << endl << endl
-             << "Enter Your Choice:";
+             << "Enter Your Choice: ";
 		cin >> choice;
 		switch(choice)
 		{
-		    case 1: { cm->userInteraction(); }
-		    case 2: { im->userInteraction(); }
-		    case 3: { rm->userInteraction(); }
+		case 1: { cm->userInteraction(); } break;
+		case 2: { im->userInteraction(); } break;
+		case 3: { rm->userInteraction(); } break;
 		}
 	} while (choice != 4);
 }
 
 ControlModule::ControlModule()
 {
-    I = new Inventory("booklist.txt");
-    cm = CashierModule(I);
-    rm = ReportModule(I);
-    im = InventoryDatabaseModule(I);
-
-
+	I = new Inventory();//"booklist.txt");
+    cm = new CashierModule(I);
+    rm = new ReportModule(I);
+    im = new InventoryDatabaseModule(I);
 }
 
 ControlModule::~ControlModule()
 {
     delete I;
+    delete cm;
+    delete im;
+    delete rm;
     I = nullptr;
+    cm = nullptr;
+    im = nullptr;
+    rm = nullptr;
 }
