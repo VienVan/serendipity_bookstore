@@ -10,10 +10,10 @@
 class ControlModule : public Module
 {
 private:
-    Inventory * I;
-    CashierModule * cm;
-    ReportModule * rm;
-    InventoryDatabaseModule * im;
+    Inventory *I;
+    CashierModule *cm;
+    ReportModule *rm;
+    InventoryDatabaseModule *im;
 public:
     ControlModule();
     ~ControlModule();
