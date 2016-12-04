@@ -2,8 +2,6 @@
 
 #include <iostream>
 #include "ControlModule.h"
-#include "Date.h"
-#include "Inventory.h"
 
 
 using namespace std;
@@ -11,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    ControlModule runner;
+    ControlModule runner = ControlModule();
     runner.userInteraction();
 	cin.ignore();
 	cin.get();

@@ -10,12 +10,13 @@
 class ControlModule : public Module
 {
 private:
-    CashierModule * cm;
-    ReportModule *rm;
-    InventoryDatabaseModule *im;
-    Inventory *I;
+    Inventory * I;
+    CashierModule cm;
+    ReportModule rm;
+    InventoryDatabaseModule im;
 public:
     ControlModule();
+    ~ControlModule();
 	void userInteraction();
 
 };
