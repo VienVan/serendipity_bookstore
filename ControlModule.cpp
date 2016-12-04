@@ -2,9 +2,9 @@
 #include "ControlModule.h"
 
 
-ControlModule::ControlModule()
+ControlModule::ControlModule(string filepath)
 {
-	I = new Inventory();
+	I = new Inventory(filepath);
     cm = new CashierModule(I);
     rm = new ReportModule(I);
     im = new InventoryDatabaseModule(I);
