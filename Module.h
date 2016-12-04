@@ -12,6 +12,7 @@ protected:
 public:
 	Module(Inventory * i) : inv(i){}
 	Module();
+	virtual ~Module();
 	virtual void userInteraction() = 0;
 };
 

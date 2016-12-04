@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+//#define _CRT_SECURE_NO_WARNINGS
 #include "ControlModule.h"
 
 void ControlModule::userInteraction()
@@ -14,17 +14,25 @@ void ControlModule::userInteraction()
 		cin >> choice;
 		switch(choice)
 		{
-		    case 1: { cm->userInteraction(); }
-		    case 2: { im->userInteraction(); }
-		    case 3: { rm->userInteraction(); }
+		    case 1: { cm.userInteraction(); }
+		    case 2: { im.userInteraction(); }
+		    case 3: { rm.userInteraction(); }
 		}
 	} while (choice != 4);
 }
 
 ControlModule::ControlModule()
 {
-    I = Inventory("booklist.txt");
-    cm = CashierModule;
-    rm = ReportModule;
-    im = InventoryDatabaseModule;
+    I = new Inventory("booklist.txt");
+    cm = CashierModule(I);
+    rm = ReportModule(I);
+    im = InventoryDatabaseModule(I);
+
+
+}
+
+ControlModule::~ControlModule()
+{
+    delete I;
+    I = nullptr;
 }
