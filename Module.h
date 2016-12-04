@@ -11,8 +11,8 @@ protected:
 	Inventory * inv;
 public:
 	Module(Inventory * i) : inv(i){}
-	Module();
-	virtual ~Module();
+	Module(){}
+	virtual ~Module(){}
 	virtual void userInteraction() = 0;
 };
 

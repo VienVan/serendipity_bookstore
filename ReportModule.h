@@ -6,8 +6,11 @@
 
 class ReportModule : public Module
 {
+public:
+	ReportModule(Inventory * i) : Module(i){}
 	void userInteraction();
-	ReportModule(Inventory * i) : Module(i) {};
+
+
 };
 
 #endif
