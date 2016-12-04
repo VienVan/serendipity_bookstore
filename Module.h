@@ -9,10 +9,10 @@ protected:
 	const double SALESTAX = 1.0875;
 	const double WHOLESALEMARKUP = 1.3;
 	Inventory * inv;
-public: 
+public:
 	Module(Inventory * i) : inv(i){}
 	Module();
-	virtual void UserInteraction() = 0;
+	virtual void userInteraction() = 0;
 };
 
 #endif

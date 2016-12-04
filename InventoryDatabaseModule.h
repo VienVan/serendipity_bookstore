@@ -1,5 +1,5 @@
-#ifndef _CASHIERMODULE_H
-#define _CASHIERMODULE_H
+#ifndef _INVENTORYDATABASEMODULE_H
+#define _INVENTORYDATABASEMODULE_H
 
 #include "Book.h"
 #include "Inventory.h"
@@ -7,7 +7,7 @@
 class InventoryDatabaseModule : public Module
 {
 public:
-	void UserInteraction();
+	void userInteraction();
 };
 
 #endif
