@@ -63,7 +63,7 @@ istream &operator>>(istream &in, Date &date) {
     //also for entering the Date manually
     string input;
     in >> input;
-    //For the saek of error handling:
+    //For the sake of error handling:
     if (input.length() < 11) {
         input = "00/00/0000";
     }
