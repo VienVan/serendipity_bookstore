@@ -3,6 +3,7 @@
 
 #include "Book.h"
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -10,22 +11,22 @@ class Inventory
 {
 private:
 	const int SIZE = 1024;
-	Book inv[1024];
+    Book *inventory[1024];
     int currentSize;
 
 public:
-    Inventory(string);
-	void pullInventoryFromFile(string, Book []);
-	void sortInventoryByQuantity(Book [], const int);
-	void sortInventoryByCost(Book [], const int);
-	void sortInventoryByDate(Book [], const int);
-	void modify(Book []);
-	void view(Book []);
-	void deleteBook(Book [], int, const int);
-	void addBook(Book [], const int);
-	void reverseOrder(Book inventory[], const int size);
-	Book *getInventory() { return inv; }
-	//read books first, then destructor kill the array//
+    Inventory();
+    ~Inventory();
+	void pullInventoryFromFile(string);
+	void sortInventoryByQuantity();
+	void sortInventoryByCost();
+	void sortInventoryByDate();
+    void sortInventoryByTitle();
+    void editBook(int, Book);
+    void deleteBook(int index);
+    void addBook(Book input);
+    int searchTitle(string);
+    Book operator[] (int index) { return *inventory[index]; }
 };
 
 #endif

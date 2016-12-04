@@ -2,30 +2,46 @@
 
 #include <string>
 #include <iostream>
-
+#include "Date.h"
 #include "Book.h"
 #include "Inventory.h"
 
 using namespace std;
 
-Inventory::Inventory(string filename) {
-    const int SIZE = 1024;
+Inventory::Inventory() {
     currentSize = 0;
-    Book Inventory[SIZE];
-	ifstream inputFile(filename);
-    for (int count = 0; count < 1024 && inputFile >> Inventory[count]; ++count) {
-        currentSize++;
+    for (int i = 0; i < SIZE; ++i) {
+        inventory[i] = new Book;
     }
+    ifstream inputFile;
+    inputFile.open("books.txt");
+    for (int count = 0; count < SIZE && inputFile >> *inventory[count]; ++count, ++currentSize);
 	inputFile.close();
 }
 
-void Inventory::sortInventoryByQuantity(Book inventory[], const int size) {
+Inventory::~Inventory() {
+    for (int i = 0; i < SIZE; ++i) {
+        delete inventory[i];
+    }
+}
+
+void Inventory::pullInventoryFromFile(string filepath) {
+    ifstream inputFile;
+    inputFile.open(filepath);
+    for (int count = 0; count < SIZE; ++count) {
+        inputFile >> *inventory[count];
+        ++currentSize;
+    }
+    inputFile.close();
+}
+
+void Inventory::sortInventoryByQuantity() {
     int pos_min;
-    Book temp;
-	for (int i = 0; i < size - 1; i++) {
+    Book *temp;
+	for (int i = 0; i < SIZE - 1; i++) {
 	    pos_min = i;
-		for (int j = i + 1; j < size; j++) {
-		if (inventory[j].getQuantity() < inventory[pos_min].getQuantity())
+		for (int j = i + 1; j < SIZE; j++) {
+		if (inventory[j]->getQuantity() < inventory[pos_min]->getQuantity())
                    pos_min = j;
 		}
             if (pos_min != i) {
@@ -36,153 +52,98 @@ void Inventory::sortInventoryByQuantity(Book inventory[], const int size) {
 	}
 }
 
-void Inventory::sortInventoryByCost(Book inventory[], const int size) { 
+void Inventory::sortInventoryByCost() {
     int pos_min;
-    Book temp;
-	for (int i = 0; i < size - 1; i++) {
-	    pos_min = i;
-		for (int j = i + 1; j < size; j++) {
-		if (inventory[j].getWholesale() < inventory[pos_min].getWholesale())
-                   pos_min = j;
-		}
-            if (pos_min != i) {
-                temp = inventory[i];
-                inventory[i] = inventory[pos_min];
-                inventory[pos_min] = temp;
-            }
-	}
+    Book *temp;
+    for (int i = 0; i < SIZE - 1; i++) {
+        pos_min = i;
+        for (int j = i + 1; j < SIZE; j++) {
+            if (inventory[j]->getWholesale() < inventory[pos_min]->getWholesale())
+                pos_min = j;
+        }
+        if (pos_min != i) {
+            temp = inventory[i];
+            inventory[i] = inventory[pos_min];
+            inventory[pos_min] = temp;
+        }
+    }
 }
-void Inventory::sortInventoryByDate(Book inventory[], const int size) {
+
+void Inventory::sortInventoryByDate() {
     int pos_min;
-    Book temp;
-	for (int i = 0; i < size - 1; i++) {
-	    pos_min = i;
-		for (int j = i + 1; j < size; j++) {
-		if (inventory[j].getDate() > inventory[pos_min].getDate())
-                   pos_min = j;
-		}
-            if (pos_min != i) {
-                temp = inventory[i];
-                inventory[i] = inventory[pos_min];
-                inventory[pos_min] = temp;
-            }
-	}
+    Book *temp;
+    for (int i = 0; i < SIZE - 1; i++) {
+        pos_min = i;
+        for (int j = i + 1; j < SIZE; j++) {
+            if (inventory[j]->getDate() > inventory[pos_min]->getDate())
+                pos_min = j;
+        }
+        if (pos_min != i) {
+            temp = inventory[i];
+            inventory[i] = inventory[pos_min];
+            inventory[pos_min] = temp;
+        }
+    }
 }
 
-void Inventory::reverseOrder(Book inventory[], const int size)
-{
-	for (int i = 0; i < size / 2; ++i)
-		inventory[i] = inventory[size - i];
+void Inventory::sortInventoryByTitle() {
+    int pos_min;
+    Book *temp;
+    for (int i = 0; i < SIZE - 1; i++) {
+        pos_min = i;
+        for (int j = i + 1; j < SIZE; j++) {
+            if (inventory[j]->getTitle() < inventory[pos_min]->getTitle())
+                pos_min = j;
+        }
+        if (pos_min != i) {
+            temp = inventory[i];
+            inventory[i] = inventory[pos_min];
+            inventory[pos_min] = temp;
+        }
+    }
 }
 
-void Inventory::modify(Book inventory[]) 
+void Inventory::editBook(int index, Book modified)
 {
-	int index;
-	char selection;
-	string temp_data;
-	cout << "Please enter the number of the book you want to modify:\n";
-	cin >> index;
-    index--;
-	do {
-		cout << "Please select which of the following you would like to modify:\nA: Title\nB: Author\nC: Publisher\nD: ISBN\nE: Date\n F: Quantity\nG: Wholesale Cost\nH: Retail Cost\n";
-		cin >> selection;
-		cin.ignore();
-		switch(toupper(selection)) {
-			case 'A':
-				cout << "Please enter the new title. Press tab once you are done\n";
-				getline(cin, temp_data, '\t');
-				inventory[index].setTitle(temp_data);
-				break;
-			case 'B': 
-				cout << "Please enter the new author. Press tab once you are done\n";
-				getline(cin, temp_data, '\t');
-				inventory[index].setAuthor(temp_data);
-				break;
-			case 'C':
-				cout << "Please enter the new publisher. Press tab once you are done\n";
-				getline(cin, temp_data, '\t');
-				inventory[index].setPublisher(temp_data);
-				break;
-			case 'D': 
-				cout << "Please enter the new ISBN:\n";
-				cin >> temp_data;
-				inventory[index].setISBN(temp_data);
-				break;
-			case 'E':
-			
-				break;
-			case 'F': 
-				cout << "Please enter the updated quantity:\n";
-				cin >> temp_data;
-				inventory[index].setQuantity(stoi(temp_data));
-				break;
-			case 'G': 
-				cout << "Please enter the updated cost:\n";
-				cin >> temp_data;
-				inventory[index].setWholesale(stod(temp_data));
-				break;
-			case 'H': 
-				cout << "Please enter the updated price:\n";
-				cin >> temp_data;
-				inventory[index].setRetail(stod(temp_data));
-				break;
-			default: selection = 0;
-		}
-	} while (selection == 0);
-		
-}
-
-void Inventory::view(Book inventory[]) 
-{
-	int index;
-	char selection;
-	cout << "Please enter the number of the book you want to view:\n";
-	cin >> index;
-	do {
-		cout << "Please select which of the following you would like to view:\nA: Title\nB: Author\nC: Publisher\nD: ISBN\nE: Date\n F: Quantity\nG: Wholesale Cost\nH: Retail Cost\n";
-		cin >> selection;
-		cin.ignore();
-		switch(toupper(selection)) 
-		{
-			case 'A': cout << inventory[index].getTitle();
-				break;
-			case 'B': cout << inventory[index].getAuthor();
-				break;
-			case 'C': cout << inventory[index].getPublisher();
-				break;
-			case 'D': cout << inventory[index].getISBN();
-				break;
-			case 'E': cout << inventory[index].getDate();
-				break;
-			case 'F': cout << inventory[index].getQuantity();
-				break;
-			case 'G': cout << inventory[index].getWholesale();
-				break;
-
-			case 'H': cout << inventory[index].getRetail();
-				break;
-			default: selection = 0;
-		}
-	} while (selection == 0);		
+    *inventory[index] = modified;
 }
 		 
-void Inventory::deleteBook(Book inventory[], int index, const int size)
+void Inventory::deleteBook(int index)
 {
-    for (;index < size - 1; index++) {
-		inventory[index] = inventory[index + 1];
-	}
-    currentSize--;
+    if (currentSize == 0) {
+        for (;index < SIZE - 1; index++) {
+            inventory[index] = inventory[index + 1];
+        }
+        currentSize--;
+    }
+    else throw "Error: The inventory is already empty.\n";
 }
 
-void Inventory::addBook(Book inventory[], const int size)
+void Inventory::addBook(Book input)
 {
-	Book temp;
     if (currentSize != SIZE) {
-		cout << "Please enter, in order: the title of the book, name of the author, ISBN, publisher, date added, quantity, wholesale cost, and retail value of the book: ";
-		cin >> inventory[size];
+        *inventory[currentSize] = input;
 	}
-	else
-	{
-		cout << "Sorry, there are too many books already in the inventory.\n";
-	}
+	else {
+		throw "Error: The the inventory is already full.\n";
+    }
+}
+
+int Inventory::searchTitle(string title) {
+    int index = -1;
+    sortInventoryByTitle();
+    int min = 0, max = SIZE - 1, midpoint = 0;
+    while (min <= max && index == -1) {
+        midpoint = min + (max - min)/2;
+        if (title == inventory[midpoint]->getTitle()) {
+            index = midpoint;
+        }
+        else if (title < inventory[midpoint]->getTitle()) {
+            max = midpoint - 1;
+        }
+        else { //if (title > inventory[midpoint]->getTitle())
+            min = midpoint + 1;
+        }
+    }
+    return index;
 }
