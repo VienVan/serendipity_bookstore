@@ -14,7 +14,7 @@ Book::Book(){
 	title = "";
 	ISBN = "";
 	publisher = "";
-	date = Date(1, 1, 1900);
+	date = Date(0, 0, 0000);
 	quantity = 0;
 	wholesale = 0.0;
 	retail = 0.0;
@@ -43,7 +43,7 @@ istream& operator>>(istream& in, Book&thi)
 //For inputting the Book from the file to the inventory
 //also for entering the Book manually
 {
-	in.ignore(); //Is this in the right place?
+	in.ignore(); //Should this be here or not?
 	getline(in, thi.title, '\t');
 	getline(in, thi.author,'\t');
 	in >> thi.ISBN;
