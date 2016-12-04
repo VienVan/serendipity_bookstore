@@ -12,7 +12,8 @@ void ReportModule::userInteraction()
 			 << "4. Listing by Quantity" << endl
 			 << "5. Listing by Cost" << endl
 			 << "6. Listing by Age" << endl
-			 << "7. Return to Main Menu" << endl;
+			 << "7. Return to Main Menu" << endl
+		     << "Enter Your Choice: ";
 		cin >> choice;
 	} while (choice != 7);
 }
