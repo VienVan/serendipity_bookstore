@@ -16,13 +16,3 @@ public:
 };
 
 #endif
-
-/*Problems and modifications:
- -"Fixed" linker errors by filling these in with empty functions
- -Massive revamping of all input/output stream functions/operators
- -Date entry formatting
- -Fix in.ignore()
- -Add exceptions and templates; polymorphism done
- -Need to complete all three branch modules
- -Documentation and Deliverables
-*/
