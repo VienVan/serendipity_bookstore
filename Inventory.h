@@ -27,6 +27,7 @@ public:
     void addBook(Book input);
     int searchTitle(string);
     Book operator[] (int index) { return *inventory[index]; }
+    ostream &operator<<(ostream &);
 };
 
 #endif

@@ -190,3 +190,10 @@ int Inventory::searchTitle(string title) {
     }
     return index;
 }
+
+ostream &Inventory::operator<<(ostream &cout) {
+    for (int i = 0; i < currentSize; ++i) {
+        cout << *inventory[i] << endl;
+    }
+    return cout;
+}
