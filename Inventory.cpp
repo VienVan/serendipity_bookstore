@@ -54,7 +54,7 @@ void Inventory::sortInventoryByQuantity() {
 	for (int i = 0; i < SIZE - 1; i++) {
 	    pos_min = i;
 		for (int j = i + 1; j < SIZE; j++) {
-		if (inventory[j]->getQuantity() < inventory[pos_min]->getQuantity())
+		if (inventory[j]->getQuantity() > inventory[pos_min]->getQuantity())
                    pos_min = j;
 		}
             if (pos_min != i) {
@@ -75,7 +75,7 @@ void Inventory::sortInventoryByCost() {
     for (int i = 0; i < SIZE - 1; i++) {
         pos_min = i;
         for (int j = i + 1; j < SIZE; j++) {
-            if (inventory[j]->getWholesale() < inventory[pos_min]->getWholesale())
+            if (inventory[j]->getWholesale() > inventory[pos_min]->getWholesale())
                 pos_min = j;
         }
         if (pos_min != i) {
