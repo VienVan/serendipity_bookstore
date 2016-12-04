@@ -8,14 +8,17 @@
 
 using namespace std;
 
-Inventory::Inventory(string filename, Book inventory[]) {
+Inventory::Inventory(string filename) {
+    const int SIZE = 1024;
+    Book Inventory[SIZE];
 	ifstream inputFile(filename);
-	for (int count = 0; count < 1024 && inputFile >> inventory[count]; ++count);
+	for (int count = 0; count < 1024 && inputFile >> Inventory[count]; ++count);
 	inputFile.close();
 }
 
 void Inventory::sortInventoryByQuantity(Book inventory[], const int size) {
-	int pos_min, temp;
+    int pos_min;
+    Book temp;
 	for (int i = 0; i < size - 1; i++) {
 	    pos_min = i;
 		for (int j = i + 1; j < size; j++) {
@@ -23,9 +26,9 @@ void Inventory::sortInventoryByQuantity(Book inventory[], const int size) {
                    pos_min = j;
 		}
             if (pos_min != i) {
-                 temp = inventory[i].getQuantity();
-                 inventory[i].setQuantity(inventory[pos_min].getQuantity());
-                 inventory[pos_min].setQuantity(temp);
+                 temp = inventory[i];
+                 inventory[i] = inventory[pos_min];
+                 inventory[pos_min] = temp;
             }
 	}
 }
@@ -39,14 +42,15 @@ void Inventory::sortInventoryByCost(Book inventory[], const int size) {
                    pos_min = j;
 		}
             if (pos_min != i) {
-                 temp = inventory[i].getWholesale();
-                 inventory[i].setWholesale(inventory[pos_min].getWholesale());
-                 inventory[pos_min].setWholesale(temp);
+                temp = inventory[i];
+                inventory[i] = inventory[pos_min];
+                inventory[pos_min] = temp;
             }
 	}
 }
 void Inventory::sortInventoryByDate(Book inventory[], const int size) {
-	int pos_min, temp;
+    int pos_min;
+    Book temp;
 	for (int i = 0; i < size - 1; i++) {
 	    pos_min = i;
 		for (int j = i + 1; j < size; j++) {
@@ -54,9 +58,9 @@ void Inventory::sortInventoryByDate(Book inventory[], const int size) {
                    pos_min = j;
 		}
             if (pos_min != i) {
-                 temp = inventory[i].getDate();
-                 inventory[i].getDate(inventory[pos_min].getDate());
-                 inventory[pos_min].getDate(temp);
+                temp = inventory[i];
+                inventory[i] = inventory[pos_min];
+                inventory[pos_min] = temp;
             }
 	}
 }
@@ -73,24 +77,25 @@ void Inventory::modify(Book inventory[])
 	char selection;
 	string temp_data;
 	cout << "Please enter the number of the book you want to modify:\n";
-	cin >> index--;
+	cin >> index;
+    index--;
 	do {
 		cout << "Please select which of the following you would like to modify:\nA: Title\nB: Author\nC: Publisher\nD: ISBN\nE: Date\n F: Quantity\nG: Wholesale Cost\nH: Retail Cost\n";
 		cin >> selection;
 		cin.ignore();
 		switch(toupper(selection)) {
 			case 'A':
-				"Please enter the new title. Press tab once you are done\n";
+				cout << "Please enter the new title. Press tab once you are done\n";
 				getline(cin, temp_data, '\t');
 				inventory[index].setTitle(temp_data);
 				break;
 			case 'B': 
-				"Please enter the new author. Press tab once you are done\n";
+				cout << "Please enter the new author. Press tab once you are done\n";
 				getline(cin, temp_data, '\t');
 				inventory[index].setAuthor(temp_data);
 				break;
 			case 'C':
-				"Please enter the new publisher. Press tab once you are done\n";
+				cout << "Please enter the new publisher. Press tab once you are done\n";
 				getline(cin, temp_data, '\t');
 				inventory[index].setPublisher(temp_data);
 				break;
@@ -159,16 +164,15 @@ void Inventory::view(Book inventory[])
 		 
 void Inventory::deleteBook(Book inventory[], int index, const int size)
 {
-	while (index < size - 1)
-	{
-		inventory[index] = inventory[++index];
+    for (;index < size - 1; index++) {
+		inventory[index] = inventory[index + 1];
 	}
 }
 
 void Inventory::addBook(Book inventory[], const int size)
 {
 	Book temp;
-	if (!inventory[size])
+	if (!inventory[size]) //Fix this
 	{
 		cout << "Please enter, in order: the title of the book, name of the author, ISBN, publisher, date added, quantity, wholesale cost, and retail value of the book: ";
 		cin >> inventory[size];
