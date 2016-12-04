@@ -8,7 +8,7 @@ int Date::getDay() const { return day; }
 int Date::getMonth() const { return month; }
 int Date::getYear() const { return year; }
 
-Date::setDate(int m, int d, int y)
+void Date::setDate(int m, int d, int y)
 {
 	day = d;
 	month = m;
@@ -48,7 +48,7 @@ bool operator<=(const Date &thi, const Date &tha)
 	return operator==(thi, tha) || operator<(thi, tha);
 }
 
-ostream& operator<<(ostream& out, const Date&thi)
+/*ostream& operator<<(ostream& out, const Date&thi)
 {
 	(thi.month < 10) ? (out << '0' << thi.month) : (out << thi.month);
 	out << '/';
@@ -64,3 +64,4 @@ istream &operator>>(istream &in, const Date &thi) {
 	in >> thi.year;
 	return in;
 }
+*/

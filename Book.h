@@ -18,7 +18,7 @@ private:
 	double retail;
 public:
 	Book();
-	Book(string a, string t, long i, string p, int d, int m, int y, int q, double w, double r);
+	Book(string a, string t, string i, string p, int d, int m, int y, int q, double r);
 	friend ostream& operator<< (ostream &out, const Book &thi);
 	friend istream& operator>> (istream &in, const Book &thi);
 	string getAuthor() { return author; }

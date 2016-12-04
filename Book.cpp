@@ -11,25 +11,25 @@ using namespace std;
 Book::Book(){
 	author = "";       //Set all of these to default values. Make sure that they do not mess up sorting operations, etc.
 	title = "";
-	ISBN = 0;
+	ISBN = "";
 	publisher = "";
-	date = setDate(1, 1, 1900);
+	date = Date(1, 1, 1900);
 	quantity = 0;
 	wholesale = 0.0;
 	retail = 0.0;
 }
-Book::Book(string a, string t, long i, string p, int d, int m, int y, int q, double w, double r)
+Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, double r)
 {
 	author = a;
 	title = t;
 	ISBN = i;
 	publisher = p;
-	date = setDate(m, d, y);
+	date = Date(m, d, y);
 	quantity = q;
-	wholesale = w;
 	retail = r;
+	wholesale = r*1.3;
 }
-
+/*
 ostream& operator<<(ostream& out, const Book &thi)
 {
 	out << thi.title << '\t' << thi.author << '\t' << thi.ISBN << '\t' << thi.publisher << '\t' << thi.date << '\t' << thi.quantity << '\t' << thi.wholesale << '\t' << thi.retail << '\n';
@@ -52,3 +52,4 @@ istream& operator>>(istream& in, const Book&thi)
 	//Using getline because tab is our limiting character
 	return in;
 }
+*/
