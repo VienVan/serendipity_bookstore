@@ -2,6 +2,8 @@
 #include "Date.h"
 #include <iostream>
 #include <iomanip>
+#include <string>
+#include <cstdlib>
 
 using namespace std;
 
@@ -58,14 +60,15 @@ ostream& operator<<(ostream& out, Date &date)
 }
 
 istream &operator>>(istream &in, Date &date) {
-    //Inputting the Date from the file to the inventory-->Yes
-    //also for inputting the Date manually-->Yes
-    //Enter two digits, ignore '/'', input two more, ignore again, input last four
-	//in.ignore(); Why is this here?
-    in >> date.month;
-    in.ignore();
-    in >> date.day;
-    in.ignore();
-    in >> date.year;
+    //For inputting the Date from the file to the inventory
+    //also for entering the Date manually
+    string input;
+    in >> input;
+    string tempMonth = input.substr(0, 2);
+    string tempDay = input.substr(3, 2);
+    string tempYear = input.substr(6, 4);
+    date.month = atoi(tempMonth.c_str());
+    date.day = atoi(tempDay.c_str());
+    date.year = atoi(tempYear.c_str());
 	return in;
 }
