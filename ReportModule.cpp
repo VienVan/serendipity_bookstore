@@ -5,7 +5,7 @@ void ReportModule::userInteraction()
 {
 	int choice;
 	do{
-		cout << "Serendipity Booksellers Reports" << endl
+		cout << "\n\tSerendipity Booksellers\n\t\t Reports" << endl
 			 << "1. Inventory Listing" << endl
 			 << "2. Inventory Wholesale Value" << endl
 			 << "3. Inventory Retail Value" << endl
@@ -15,5 +15,24 @@ void ReportModule::userInteraction()
 			 << "7. Return to Main Menu" << endl
 		     << "Enter Your Choice: ";
 		cin >> choice;
+        switch (choice) {
+            case 1: //Print list
+                break;
+            case 2: //Print list
+                //Then print total resale value
+                break;
+            case 3: //Print list
+                //Then print wholesale value
+                break;
+            case 4: inv->sortInventoryByCost();
+                //Then print list
+                break;
+            case 5: inv->sortInventoryByQuantity();
+                //Then print list
+                break;
+            case 6: inv->sortInventoryByDate();
+                //Then print list
+                break;
+        }
 	} while (choice != 7);
 }

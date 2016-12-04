@@ -5,7 +5,7 @@ void InventoryDatabaseModule::userInteraction()
 {
 	int choice;
 	do{
-		cout << "\t Serendipity Booksellers\n\t\t Main Menu" << endl
+		cout << "\n\n\t Serendipity Booksellers\n\t\t Main Menu" << endl
 			<< "1. Look Up a Book" << endl
 			<< "2. Add a Book" << endl
 			<< "3. Edit a Book's Record" << endl
@@ -15,10 +15,14 @@ void InventoryDatabaseModule::userInteraction()
 		cin >> choice;
 		switch (choice)
 		{
-			case 1: { lookUpBook(); } break;
-			case 2: { addBook(); } break;
-			case 3: { editBook(); } break;
-			case 4: { deleteBook(); } break;
+			case 1: lookUpBook();
+                break;
+			case 2: addBook();
+                break;
+			case 3: editBook();
+                break;
+			case 4: deleteBook();
+                break;
 		}
 	} while (choice != 5);
 }
