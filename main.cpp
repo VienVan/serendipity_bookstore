@@ -23,7 +23,7 @@ int main()
  -New data (and especially Date) entry formatting
  -Fix in.ignore()
  -Add exceptions and templates; polymorphism done
- -Still eed to complete all three branch modules
+ -Still need to complete all three branch modules
  -Documentation and Deliverables
  For Ronald: I changed the cout/cin functions for both the Book and Date classes. Here's how it needs to be done:
  Tabs delimit anything that has spaces (Title, Author, Publisher). Everything else has a space at the end.
