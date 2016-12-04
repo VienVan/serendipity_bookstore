@@ -7,7 +7,7 @@
 class CashierModule : public Module
 {
 public:
-	void UserInteraction();
+	void userInteraction();
 };
 
 #endif

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void CashierModule::UserInteraction() 
+void CashierModule::UuserInteraction()
 {
   cout << "Book Title: " << endl;
   cin  >> title;
@@ -17,7 +17,7 @@ void CashierModule::UserInteraction()
 
 double CashierModule::getSalesTax()
 {
-
+    return SALESTAX;
 }
 
 void CashierModule::deleteBookFromInventory()

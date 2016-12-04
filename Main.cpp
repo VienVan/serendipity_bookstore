@@ -11,8 +11,9 @@ using namespace std;
 
 int main()
 {
-    ControlModule runner = ControlModule();
+    ControlModule runner;
     runner.userInteraction();
-	system("pause");
+	cin.ignore();
+	cin.get();
 	return 0;
 }

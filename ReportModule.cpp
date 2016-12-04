@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "ReportModule.h"
 
-void ReportModule::UserInteraction()
+void ReportModule::userInteraction()
 {
 	int choice;
 	do{

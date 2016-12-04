@@ -16,7 +16,7 @@ private:
     Inventory *I;
 public:
     ControlModule();
-	void UserInteraction();
+	void userInteraction();
 
 };
 

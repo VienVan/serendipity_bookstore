@@ -6,7 +6,7 @@
 
 class ReportModule : public Module
 {
-	void UserInteraction();
+	void userInteraction();
 
 
 };
