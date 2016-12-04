@@ -16,13 +16,14 @@ public:
 	int getDay() const;
 	int getMonth() const;
 	int getYear() const;
-	friend bool operator==(const Date &thi, const Date &tha);
-	friend bool operator!=(const Date &thi, const Date &tha);
-	friend bool operator>(const Date &thi, const Date &tha);
-	friend bool operator<(const Date &thi, const Date &tha);
-	friend bool operator>=(const Date &thi, const Date &tha);
-	friend bool operator<=(const Date &thi, const Date &tha);
-	friend ostream& operator<< (ostream &out, const Date &thi);
+	friend bool operator==(const Date &, const Date &);
+	friend bool operator!=(const Date &, const Date &);
+	friend bool operator>(const Date &, const Date &);
+	friend bool operator<(const Date &, const Date &);
+	friend bool operator>=(const Date &, const Date &);
+	friend bool operator<=(const Date &, const Date &);
+	friend ostream& operator<< (ostream &, Date &);
+    friend istream& operator>> (istream &, Date &);
 };
 
 #endif

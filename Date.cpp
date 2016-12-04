@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Date.h"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -48,20 +49,23 @@ bool operator<=(const Date &thi, const Date &tha)
 	return operator==(thi, tha) || operator<(thi, tha);
 }
 
-/*ostream& operator<<(ostream& out, const Date&thi)
+ostream& operator<<(ostream& out, Date &date)
+//Printing the Date to the file-->Not needed
+//and printing the Date to standard output-->Yes
 {
-	(thi.month < 10) ? (out << '0' << thi.month) : (out << thi.month);
-	out << '/';
-	(thi.day < 10) ? (out << '0' << thi.day) : (out << thi.day);
-	out << '/' << thi.year;
+    out << setfill('0') << setw(2) << date.month << '/' << setfill('0') << setw(2) << date.day << '/' << date.year;
 	return out;
 }
 
-istream &operator>>(istream &in, const Date &thi) {
-	in.ignore();
-	getline(in, thi.month, 2, '/');
-	getline(in, thi.day, 2, '/');
-	in >> thi.year;
+istream &operator>>(istream &in, Date &date) {
+    //Inputting the Date from the file to the inventory-->Yes
+    //also for inputting the Date manually-->Yes
+    //Enter two digits, ignore '/'', input two more, ignore again, input last four
+	//in.ignore(); Why is this here?
+    in >> date.month;
+    in.ignore();
+    in >> date.day;
+    in.ignore();
+    in >> date.year;
 	return in;
 }
-*/

@@ -29,27 +29,29 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 	retail = r;
 	wholesale = r*1.3;
 }
-/*
-ostream& operator<<(ostream& out, const Book &thi)
+
+ostream& operator<<(ostream& out, Book &thi)
+//Printing the Book to the file-->Not needed
+//and printing the Book to standard output-->Yes
 {
-	out << thi.title << '\t' << thi.author << '\t' << thi.ISBN << '\t' << thi.publisher << '\t' << thi.date << '\t' << thi.quantity << '\t' << thi.wholesale << '\t' << thi.retail << '\n';
-	//Tab marks end of field; Newline marks end of book
+	out << thi.title << '\t' << thi.author << '\t' << thi.ISBN << ' ' << thi.publisher << '\t' << thi.date << ' ' << thi.quantity << ' ' << thi.wholesale << ' ' << thi.retail << ' ';
 	return out;
 }
 
-istream& operator>>(istream& in, const Book&thi)
+istream& operator>>(istream& in, Book&thi)
+//For inputting the Book from the file to the inventory
+//also for entering the Book manually
 {
-	//This requires that the read position start at the beginning of a book
-	in.ignore();
-	getline(in, thi.title, 1024, '\t');
-	getline(in, thi.author, 1024, '\t');
-	getline(in, thi.ISBN, 13, '\t');
-	getline(in, thi.publisher, 1024, '\t');
-	getline(in, thi.date, 10, '\t');
-	getline(in, thi.quantity, 1024, '\t');
-	getline(in, thi.wholesale, 1024, '\t');
-	getline(in, thi.retail, 1024, '\n');
-	//Using getline because tab is our limiting character
+	//in.ignore(); Careful with these
+	getline(in, thi.title, '\t');
+	getline(in, thi.author,'\t');
+	in >> thi.ISBN;
+    in.ignore();
+	getline(in, thi.publisher, '\t');
+    in >> thi.date;
+    //Note: User/File should be instructed to enter in format: MM/DD/YYYY
+    in >> thi.quantity;
+    in >> thi.wholesale;
+    in >> thi.retail;
 	return in;
 }
-*/
