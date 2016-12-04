@@ -9,7 +9,8 @@ using namespace std;
 
 
 Book::Book(){
-	author = "";       //Set all of these to default values. Make sure that they do not mess up sorting operations, etc.
+    //Set all of these to default values. Make sure that they do not mess up sorting operations, etc.
+	author = "";
 	title = "";
 	ISBN = "";
 	publisher = "";
@@ -31,8 +32,8 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 }
 
 ostream& operator<<(ostream& out, Book &thi)
-//Printing the Book to the file-->Not needed
-//and printing the Book to standard output-->Yes
+//Printing the Book to the file
+//and printing the Book to standard output
 {
 	out << thi.title << '\t' << thi.author << '\t' << thi.ISBN << ' ' << thi.publisher << '\t' << thi.date << ' ' << thi.quantity << ' ' << thi.wholesale << ' ' << thi.retail << ' ';
 	return out;
@@ -42,14 +43,14 @@ istream& operator>>(istream& in, Book&thi)
 //For inputting the Book from the file to the inventory
 //also for entering the Book manually
 {
-	//in.ignore(); Careful with these
+	in.ignore(); //Is this in the right place?
 	getline(in, thi.title, '\t');
 	getline(in, thi.author,'\t');
 	in >> thi.ISBN;
     in.ignore();
 	getline(in, thi.publisher, '\t');
+    //Note: User/File should be instructed to enter Date in format: MM/DD/YYYY
     in >> thi.date;
-    //Note: User/File should be instructed to enter in format: MM/DD/YYYY
     in >> thi.quantity;
     in >> thi.wholesale;
     in >> thi.retail;

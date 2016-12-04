@@ -52,8 +52,7 @@ bool operator<=(const Date &thi, const Date &tha)
 }
 
 ostream& operator<<(ostream& out, Date &date)
-//Printing the Date to the file-->Not needed
-//and printing the Date to standard output-->Yes
+//For printing the Date to standard output
 {
     out << setfill('0') << setw(2) << date.month << '/' << setfill('0') << setw(2) << date.day << '/' << date.year;
 	return out;
@@ -64,11 +63,15 @@ istream &operator>>(istream &in, Date &date) {
     //also for entering the Date manually
     string input;
     in >> input;
+    //For the saek of error handling:
+    if (input.length() < 11) {
+        input = "00/00/0000";
+    }
     string tempMonth = input.substr(0, 2);
     string tempDay = input.substr(3, 2);
     string tempYear = input.substr(6, 4);
-    date.month = atoi(tempMonth.c_str());
-    date.day = atoi(tempDay.c_str());
-    date.year = atoi(tempYear.c_str());
+    date.month = stoi(tempMonth);
+    date.day = stoi(tempDay);
+    date.year = stoi(tempYear);
 	return in;
 }

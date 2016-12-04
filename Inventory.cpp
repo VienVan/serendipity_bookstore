@@ -150,7 +150,7 @@ void Inventory::deleteBook(int index)
         }
         currentSize--;
     }
-    else throw "Error: The inventory is already empty.\n";
+   // else throw "Error: The inventory is already empty.\n";
 }
 
 //**************************************************************************************
@@ -162,9 +162,7 @@ void Inventory::addBook(Book input)
     if (currentSize != SIZE) {
         *inventory[currentSize] = input;
 	}
-	else {
-		throw "Error: The the inventory is already full.\n";
-    }
+	//else throw "Error: The the inventory is already full.\n";
 }
 
 //********************************************************************************
