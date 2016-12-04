@@ -10,9 +10,12 @@ using namespace std;
 
 Inventory::Inventory(string filename) {
     const int SIZE = 1024;
+    currentSize = 0;
     Book Inventory[SIZE];
 	ifstream inputFile(filename);
-	for (int count = 0; count < 1024 && inputFile >> Inventory[count]; ++count);
+    for (int count = 0; count < 1024 && inputFile >> Inventory[count]; ++count) {
+        currentSize++;
+    }
 	inputFile.close();
 }
 
@@ -34,7 +37,8 @@ void Inventory::sortInventoryByQuantity(Book inventory[], const int size) {
 }
 
 void Inventory::sortInventoryByCost(Book inventory[], const int size) { 
-	int pos_min, temp;
+    int pos_min;
+    Book temp;
 	for (int i = 0; i < size - 1; i++) {
 	    pos_min = i;
 		for (int j = i + 1; j < size; j++) {
@@ -167,13 +171,13 @@ void Inventory::deleteBook(Book inventory[], int index, const int size)
     for (;index < size - 1; index++) {
 		inventory[index] = inventory[index + 1];
 	}
+    currentSize--;
 }
 
 void Inventory::addBook(Book inventory[], const int size)
 {
 	Book temp;
-	if (!inventory[size]) //Fix this
-	{
+    if (currentSize != SIZE) {
 		cout << "Please enter, in order: the title of the book, name of the author, ISBN, publisher, date added, quantity, wholesale cost, and retail value of the book: ";
 		cin >> inventory[size];
 	}

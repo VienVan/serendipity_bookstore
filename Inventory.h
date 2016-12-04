@@ -11,6 +11,7 @@ class Inventory
 private:
 	const int SIZE = 1024;
 	Book inv[1024];
+    int currentSize;
 
 public:
     Inventory(string);
