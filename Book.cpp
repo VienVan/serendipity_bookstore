@@ -8,17 +8,6 @@
 using namespace std;
 
 
-Book::Book(){
-    //Set all of these to default values. Make sure that they do not mess up sorting operations, etc.
-	author = "";
-	title = "";
-	ISBN = "";
-	publisher = "";
-	date = Date(0, 0, 0000);
-	quantity = 0;
-	wholesale = 0.0;
-	retail = 0.0;
-}
 Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, double r)
 {
 	author = a;
