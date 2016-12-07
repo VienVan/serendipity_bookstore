@@ -12,11 +12,13 @@ class Inventory
 {
 private:
     Book *inventory[SIZE];
+    double retailmarkup;
+    double salestax;
     int currentSize;
     string filepath;
 
 public:
-    Inventory(string);
+    Inventory(string, double, double);
     ~Inventory();
 	void pullInventoryFromFile(string);
     void addBook(Book input);
@@ -27,8 +29,10 @@ public:
 	void sortByCost();
 	void sortByDate();
     friend ostream &operator<<(ostream &, const Inventory &);
-    Book *operator[] (int index) { return inventory[index]; }
+    double totalWholesale();
     
+    double totalRetail() { return totalWholesale() * retailmarkup * salestax; }
+    Book *operator[] (int index) { return inventory[index]; }
     //To throw exceptions:
     class InvalidFile {};
     class EmptyInventory {};

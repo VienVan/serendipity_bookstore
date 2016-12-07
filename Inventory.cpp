@@ -80,6 +80,19 @@ void Inventory::deleteBook(int index)
     currentSize--;
 }
 
+//**********************************************************************
+//Definition of function totalWholesale                                *
+//This function accepts no arguements, and returns the                 *
+//total wholesale value of the entire inventory                        *
+//**********************************************************************
+double Inventory::totalWholesale() {
+    double total = 0;
+    for (int i = 0; i < SIZE; ++i) {
+        total += inventory[i]->getWholesale();
+    }
+    return total;
+}
+
 //********************************************************************************
 //Definition of function searchTitle                                             *
 //This function accepts a title as a string, seraches for it in the inventory,   *
