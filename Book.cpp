@@ -8,6 +8,17 @@
 using namespace std;
 
 
+Book::Book(){
+    //Set all of these to default values. Make sure that they do not mess up sorting operations, etc.
+	author = "";
+	title = "";
+	ISBN = "";
+	publisher = "";
+	date = Date(0, 0, 0000);
+	quantity = 0;
+	wholesale = 0.0;
+	retail = 0.0;
+}
 Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, double r)
 {
 	author = a;
@@ -18,61 +29,6 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 	quantity = q;
 	retail = r;
 	wholesale = r*1.3;
-}
-
-//******************************************************************************
-//Definition of Secondary Book constructor			                           *
-//The constructor takes one arguement from the file and breaks it down into    *
-//author, title, isbn,date,quantity,retail,wholesale                           *
-//******************************************************************************
-Book::Book(string a)
-{
-	int slash_count = 0;
-	int tab_count = 0;
-	string temp;
-
-	string retail2;
-	string date2;
-	int d, m, y;
-	for (int i = 0; i < a.size(); i++)
-	{
-		if (a[i] == '\t')
-		{
-			tab_count++;
-		}
-		else
-		{
-			switch (tab_count)
-			{
-			case 0:
-				title[i] = a[i];
-				break;
-			case 1:
-				ISBN[i] = a[i];
-				break;
-			case 2:
-				author[i] = a[i];
-				break;
-			case 3:
-				publisher[i] = a[i];
-				break;
-			case 4:
-				date2[i] = a[i];
-				break;
-			case 5:
-				retail2[i] = a[i];
-				break;
-			case 6:
-				temp[i] = a[i];
-				break;
-			default:
-				break;
-			}
-		}
-	}
-	date = Date(date2);
-	quantity = stoi(temp);
-	wholesale = retail*1.3;
 }
 
 ostream& operator<<(ostream& out, Book &thi)

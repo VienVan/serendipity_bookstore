@@ -189,13 +189,10 @@ int Inventory::searchTitle(string title) {
     return index;
 }
 
-//*******************************************************************
-//Overloading the << operator for use with an Inventory object      *
-//It print each Book with an empty line at the end                   *
-//*******************************************************************
 ostream &Inventory::operator<<(ostream &cout) {
     for (int i = 0; i < currentSize; ++i) {
-        cout << *(inventory[i]) << endl << endl;
+        cout << *inventory[i] << endl;
     }
     return cout;
 }
+

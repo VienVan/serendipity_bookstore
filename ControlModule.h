@@ -10,7 +10,7 @@
 class ControlModule : public Module
 {
 private:
-    Inventory *I;
+    Inventory * I;
     CashierModule *cm;
     ReportModule *rm;
     InventoryDatabaseModule *im;

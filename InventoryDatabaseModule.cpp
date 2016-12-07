@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "InventoryDatabaseModule.h"
 
+using namespace std;
 void InventoryDatabaseModule::userInteraction()
 {
 	int choice;
@@ -13,30 +14,85 @@ void InventoryDatabaseModule::userInteraction()
 			<< "5. Return to the Main Menu" << endl << endl
 			<< "Enter Your Choice: ";
 		cin >> choice;
+		
+		string temp;
 		switch (choice)
 		{
-			case 1: lookUpBook();
-                break;
-			case 2: addBook();
-                break;
-			case 3: editBook();
-                break;
-			case 4: deleteBook();
-                break;
+			case 1:
+			{
+				cout << "Enter the title of the book you would like to look up: ";
+				getline(cin, temp);
+				cout << "Your book is as follows:" << endl << lookUpBook(temp);
+			}break;
+			case 2:
+			{
+				Book build;
+				cout << "Enter the title of the book you would like to add: ";
+				getline(cin, temp);
+				build.setTitle(temp);
+
+				cout << "Enter the author of the book you would like to add: ";
+				getline(cin, temp);
+				build.setAuthor(temp);
+
+				cout << "Enter the ISBN of the book you would like to add: ";
+				getline(cin, temp);
+				build.setISBN(temp);
+			
+				cout << "Enter the publisher of the book you would like to add: ";
+				getline(cin, temp);
+				build.setPublisher(temp);
+
+				cout << "Enter the current date in MM/DD/YYYY format. e.g. 04/03/1990: ";
+				getline(cin, temp);
+				build.setDate(Date(temp));
+
+				cout << "Enter the quantity of books to add: ";
+				getline(cin, temp);
+				build.setQuantity(atoi(temp.c_str()));
+
+				cout << "Enter the wholesale value of the book to add: ";
+				double d;
+				cin >> d;
+				build.setWholesale(d);
+				  
+				addBook(build);
+			}break;
+			case 3:
+			{
+					  cout << "Enter the title of the book you would like to edit: ";
+					  getline(cin, temp);
+					  Book build = (*inv)[(inv->searchTitle(temp))];
+
+					  //cout << ;
+			}break;
+			case 4: 
+			{
+					  cout << "Enter the title of the book you would like to delete: ";
+					  getline(cin, temp);
+					  deleteBook(temp);
+			}break;
 		}
 	} while (choice != 5);
 }
 
-void InventoryDatabaseModule::lookUpBook()
+Book InventoryDatabaseModule::lookUpBook(string t)
 {
-	cout << "Enter the title of the book you would like to look up: ";
+	int index = inv->searchTitle(t);
+	return (*inv)[index];
 }
-void InventoryDatabaseModule::addBook()
+void InventoryDatabaseModule::addBook(Book b)
 {
+	inv->addBook(b);
 }
-void InventoryDatabaseModule::editBook()
+void InventoryDatabaseModule::editBook(string t, Book b)
 {
+	int index = inv->searchTitle(t);
+	inv->editBook(index, b);
 }  
-void InventoryDatabaseModule::deleteBook()
+
+void InventoryDatabaseModule::deleteBook(string t)
 {
+	int index = inv->searchTitle(t);
+	//inv->
 }  
