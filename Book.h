@@ -36,6 +36,7 @@ public:
 	void setWholesale(double w) { wholesale = w; }
 	void setRetail(double r) { retail = r; }
 	void setPublisher(string p) { publisher = p;}
+	void setDate(Date d) { date = d; }
 };
 
 

@@ -2,6 +2,7 @@
 #define _DATE_H
 
 #include <iostream>
+#include <string>
 using namespace std;
 class Date
 {
@@ -12,6 +13,7 @@ protected:
 public:
 	Date(){}
 	Date(int m, int d, int y) { setDate(m, d, y); }
+	Date(string s);
 	void setDate(int, int, int);
 	int getDay() const;
 	int getMonth() const;
