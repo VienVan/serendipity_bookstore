@@ -52,7 +52,7 @@ double CashierModule::getTotal()
     {
         totalBooks += bookQuantity[i];
         price = (*(*inv)[books[i]]).getWholesale() * bookQuantity[i];
-        total += price * WHOLESALEMARKUP * SALESTAX;
+        total += price * retailmarkup * salestax;
     }
     return total;
 }
