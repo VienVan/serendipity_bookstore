@@ -6,10 +6,19 @@
 #include "Module.h"
 class CashierModule : public Module
 {
+private:
+    int quantity;
+    string title;
+    int totalBooks = 0;
+    int books[1024];
+    int bookQuantity[1024];
+
 public:
-    CashierModule(Inventory * I) : Module(I){}
-	void userInteraction();
-	void deleteBookFromInventory();
+    CashierModule(Inventory *i) : Module(i){};
+    CashierModule();
+    void userInteraction();
+    double getTotal();
+    void printTotal();
 };
 
 #endif
