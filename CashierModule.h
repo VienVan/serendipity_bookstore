@@ -9,9 +9,11 @@ class CashierModule : public Module
 private:
     int quantity;
     string title;
-    int totalBooks = 0;
+    int titles = 0;
     int books[1024];
     int bookQuantity[1024];
+    int totalBooks = 0;
+    double total = 0.0;
 
 public:
     CashierModule(Inventory *i) : Module(i){};

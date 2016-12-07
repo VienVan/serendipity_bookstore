@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-
 #include "CashierModule.h"
 
 using namespace std;
@@ -14,7 +13,6 @@ CashierModule::CashierModule()
 void CashierModule::userInteraction()
 {
     bool wantToContinue = false;
-    int i = 0;
     char y;
     do
     {
@@ -31,25 +29,36 @@ void CashierModule::userInteraction()
         {
             wantToContinue = true;
         }
-        books[i] = inv->searchTitle(title);
-        bookQuantity[i] = quantity;
-        cout << books[i] << endl;
-        i++;
-        totalBooks++;
+        if(inv->searchTitle(title) != -1)
+        {
+            books[titles] = inv->searchTitle(title);
+            bookQuantity[titles] = quantity;
+            cout << books[titles] << endl;
+            titles++;
+        }
+        else if(inv->searchTitle(title) == -1)
+        {
+            cout << "We don't have that book." << endl;
+        }
 
     } while(wantToContinue);
-    cout << bookQuantity[0];
 }
 
 double CashierModule::getTotal()
 {
-    return 0.0;
+    double price;
+    total = 0.0;
+    for(int i = 0; i < titles; i++)
+    {
+        totalBooks += bookQuantity[i];
+        price = (*(*inv)[books[i]]).getWholesale() * bookQuantity[i];
+        total += price * WHOLESALEMARKUP * SALESTAX;
+    }
+    return total;
 }
 
 void CashierModule::printTotal()
 {
-    for(int i = 0; i < count; i++)
-    {
 
 
 }
