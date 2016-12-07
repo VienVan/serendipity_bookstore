@@ -13,21 +13,26 @@ private:
 	const int SIZE = 1024;
     Book *inventory[1024];
     int currentSize;
+    string filepath;
 
 public:
     Inventory(string);
     ~Inventory();
 	void pullInventoryFromFile(string);
-	void sortInventoryByQuantity();
-	void sortInventoryByCost();
-	void sortInventoryByDate();
-    void sortInventoryByTitle();
-    void editBook(int, Book);
-    void deleteBook(int index);
     void addBook(Book input);
+    void deleteBook(int index);
     int searchTitle(string);
+    void sortByTitle();
+	void sortByQuantity();
+	void sortByCost();
+	void sortByDate();
+    friend ostream &operator<<(ostream &);
     Book *operator[] (int index) { return inventory[index]; }
-    ostream &operator<<(ostream &);
+    
+    //To throw exceptions:
+    class InvalidFile {};
+    class EmptyInventory {};
+    class FullInventory {};
 };
 
 #endif
