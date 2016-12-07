@@ -17,7 +17,7 @@ private:
 	double wholesale;
 	double retail;
 public:
-	Book();
+	Book() {}
 	Book(string a, string t, string i, string p, int d, int m, int y, int q, double r);
 	friend ostream& operator<< (ostream &, Book &);
 	friend istream& operator>> (istream &, Book &);
