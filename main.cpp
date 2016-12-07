@@ -6,10 +6,12 @@
 
 using namespace std;
 
+const int SIZE = 1024;
 
 int main()
 {
 	string filepath;
+     cout << "Please enter the path to the inventory file:\n";
     cout << "Please enter the path to the inventory file:\n";
     getline(cin, filepath);
     Module *runner = new ControlModule(filepath);
@@ -19,15 +21,9 @@ int main()
 	return 0;
 }
 
-/*Problems and modifications:
- -Massive revamping of all input/output stream functions/operators
- -Changed runner to a pointer to Module for sake of including polymorphism
- -Fix in.ignore()
- -Add exceptions and templates; polymorphism done
- -Still need to complete all three branch modules
- -Documentation and Deliverables
- -Modified Book and Date entry. See below.
- For Ronald: I changed the cout/cin functions for both the Book and Date classes. Here's how it needs to be done:
- Tabs delimit anything that has spaces (Title, Author, Publisher). Everything else has a space at the end.
- For Date, make sure entry is in format: "MM/DD/YYYY"
+/*
+ What's left:
+ Finish modules
+ Fix module interaction
+ Fix inventory/book/date and book file
 */
