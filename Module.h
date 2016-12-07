@@ -6,12 +6,18 @@
 class Module
 {
 protected:
-	const double SALESTAX = 1.0875;
-	const double WHOLESALEMARKUP = 1.3;
 	Inventory * inv;
+    double retailmarkup;
+    double salestax;
 public:
-	Module(Inventory * i) : inv(i){}
-	Module(){}
+	Module(Inventory * i) : inv(i){
+        salestax = 1.0875;
+        retailmarkup = 1.3;
+    }
+	Module(){
+        salestax = 1.0875;
+        retailmarkup = 1.3;
+    }
 	virtual ~Module(){}
 	virtual void userInteraction() = 0;
 };
