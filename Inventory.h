@@ -26,7 +26,7 @@ public:
 	void sortByQuantity();
 	void sortByCost();
 	void sortByDate();
-    friend ostream &operator<<(ostream &);
+    friend ostream &operator<<(ostream &, const Inventory &);
     Book *operator[] (int index) { return inventory[index]; }
     
     //To throw exceptions:
