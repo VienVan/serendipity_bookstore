@@ -25,7 +25,7 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 //The constructor takes one arguement from the file and breaks it down into    *
 //author, title, isbn,date,quantity,retail,wholesale                           *
 //******************************************************************************
-Book::Book(string a)
+void Book::setupBook(string a)
 {
 	int slash_count = 0;
 	int tab_count = 0;
