@@ -20,13 +20,15 @@ void Date::setDate(int m, int d, int y)
 
 Date::Date(string s)
 {
-	char temp[] = s.c_str;
 	string m, d, y;
-	if (s.length != 11)
+	if (s.length() != 10)
 		throw "Invalid Date Format";
 	else
 	{
-		setDate(atoi(temp[0] + temp[1]), atoi(temp[3] + temp[4]), atoi(temp[6] + temp[7] + temp[8] + temp[9]));
+		m = s.substr(0, 2);
+		d = s.substr(3, 2);
+		y = s.substr(6, 4);
+		setDate(atoi(m.c_str()), atoi(d.c_str()), atoi( y.c_str()) );
 	}
 
 }
