@@ -10,20 +10,18 @@ const int SIZE = 1024;
 
 int main()
 {
-	string filepath;
-     cout << "Please enter the path to the inventory file:\n";
+	try {
+		string filepath;
     cout << "Please enter the path to the inventory file:\n";
     getline(cin, filepath);
     Module *runner = new ControlModule(filepath);
     runner->userInteraction();
     delete runner;
     runner = nullptr;
+	}
+	catch (...){
+		cout << "ERROR\n";
+	}
+	delete runner;
 	return 0;
 }
-
-/*
- What's left:
- Finish modules
- Fix module interaction
- Fix inventory/book/date and book file
-*/
