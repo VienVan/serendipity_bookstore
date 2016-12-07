@@ -18,7 +18,6 @@ public:
     ControlModule(string);
     ~ControlModule();
 	void userInteraction();
-
 };
 
 #endif
