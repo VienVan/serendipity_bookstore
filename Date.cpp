@@ -18,6 +18,19 @@ void Date::setDate(int m, int d, int y)
 	year = y;
 }
 
+Date::Date(string s)
+{
+	char temp[] = s.c_str;
+	string m, d, y;
+	if (s.length != 11)
+		throw "Invalid Date Format";
+	else
+	{
+		setDate(atoi(temp[0] + temp[1]), atoi(temp[3] + temp[4]), atoi(temp[6] + temp[7] + temp[8] + temp[9]));
+	}
+
+}
+
 bool operator==(const Date &thi, const Date &tha)
 {
 	return thi.day == tha.day && thi.month == tha.month && thi.year == tha.year;
