@@ -36,7 +36,29 @@ Inventory::~Inventory() {
 //*************************************************************************************
 void Inventory::pullInventoryFromFile(string filepath) {
     ifstream inputFile;
+	string temp;
     inputFile.open(filepath);
+	{
+    if(!inputFile)
+    {
+        cerr << "cannot open books.txt";
+        exit(2);
+    }
+   
+    for(int i = -1; inputFile.peek() != EOF; i++)
+    {
+        if(i == -1)
+        {
+            getline(inputFile,temp,'\n');
+        }
+        else
+        {
+           getline(inputFile,temp,'\n');
+		   *
+		   
+        }
+    }
+}
     for (int count = 0; count < SIZE; ++count) {
         inputFile >> *inventory[count];
         ++currentSize;
