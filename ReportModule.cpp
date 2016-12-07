@@ -3,7 +3,7 @@
 
 void ReportModule::userInteraction()
 {
-	int choice;
+	string choice;
 	do{
 		cout << "\n\tSerendipity Booksellers\n\t\t Reports" << endl
 			 << "1. Inventory Listing" << endl
@@ -14,13 +14,16 @@ void ReportModule::userInteraction()
 			 << "6. Listing by Age" << endl
 			 << "7. Return to Main Menu" << endl
 		     << "Enter Your Choice: ";
-		cin >> choice;
-        switch (choice) {
-            case 1: //Print list
-                break;
-            case 2: //Print list
-                //Then print total resale value
-                break;
+		getline(cin, choice);
+        switch (atoi(choice.c_str())) {
+			case 1:
+			{
+				cout << *inv;
+			}break;
+			case 2:
+			{
+				cout << *inv;
+			}break;
             case 3: //Print list
                 //Then print wholesale value
                 break;
@@ -34,5 +37,5 @@ void ReportModule::userInteraction()
                 //Then print list
                 break;
         }
-	} while (choice != 7);
+	} while (atoi(choice.c_str()) != 7);
 }

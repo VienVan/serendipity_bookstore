@@ -187,4 +187,15 @@ void Inventory::sortByDate() {
     }
 }
 
-//Make an ostream << operator overload
+//*******************************************************************
+//Overloading the << operator for use with an Inventory object      *
+//It print each Book with an empty line at the end                   *
+//*******************************************************************
+ostream& operator<<(ostream &out, const Inventory &thi) {
+    for (int i = 0; i < thi.currentSize; ++i) {
+        cout << *(thi.inventory[i]) << endl << endl;
+    }
+    return cout;
+}
+
+
