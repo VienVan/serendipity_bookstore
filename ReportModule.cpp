@@ -27,13 +27,13 @@ void ReportModule::userInteraction()
             case 3: //Print list
                 //Then print wholesale value
                 break;
-            case 4: inv->sortInventoryByCost();
+            case 4: inv->sortByCost();
                 //Then print list
                 break;
-            case 5: inv->sortInventoryByQuantity();
+            case 5: inv->sortByQuantity();
                 //Then print list
                 break;
-            case 6: inv->sortInventoryByDate();
+            case 6: inv->sortByDate();
                 //Then print list
                 break;
         }

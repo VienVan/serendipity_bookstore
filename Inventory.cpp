@@ -47,7 +47,7 @@ void Inventory::pullInventoryFromFile(string filepath) {
             getline(inputFile,temp,'\n');
         else {
             getline(inputFile,temp,'\n');
-            //
+            
         }
     }
     for (int count = 0; count < SIZE; ++count) {

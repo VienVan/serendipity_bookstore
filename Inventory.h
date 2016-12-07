@@ -5,13 +5,13 @@
 #include <string>
 #include <fstream>
 
+const int SIZE = 1024;
 using namespace std;
 
 class Inventory
 {
 private:
-	const int SIZE = 1024;
-    Book *inventory[1024];
+    Book *inventory[SIZE];
     int currentSize;
     string filepath;
 
