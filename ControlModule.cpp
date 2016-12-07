@@ -4,7 +4,7 @@
 
 ControlModule::ControlModule(string filepath)
 {
-	I = new Inventory(filepath);
+	I = new Inventory(filepath, retailmarkup, salestax);
     cm = new CashierModule(I);
     rm = new ReportModule(I);
     im = new InventoryDatabaseModule(I);
