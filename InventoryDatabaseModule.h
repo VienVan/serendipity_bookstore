@@ -9,7 +9,6 @@ class InventoryDatabaseModule : public Module
 public:
     InventoryDatabaseModule(Inventory * i) : Module(i) {}
     void userInteraction();
-	Book lookUpBook(string t);
 	void addBook(Book b);
 	void deleteBook(string t);
 	void editBook(string t, Book b);
