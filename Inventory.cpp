@@ -38,21 +38,25 @@ Inventory::~Inventory() {
 //This function accepts a filepath string argument and pulls an inventory from a file *
 //*************************************************************************************
 void Inventory::pullInventoryFromFile(string filepath) {
-    ifstream inputFile;
-    string temp;
-    inputFile.open(filepath);
-    if(!inputFile) throw InvalidFile();
-    
-    for(int i = -1; i < 25; i++)
-    {
-        if(i == -1)
-            getline(inputFile,temp,'\n');
-        else {
-            getline(inputFile,temp,'\n');
-            inventory[i]->setupBook(temp);
-        }
-    }
-    inputFile.close();
+	ifstream inputFile;
+	string temp;
+	string temp2 = "books.txt";
+	inputFile.open(temp2);
+	if (!inputFile)
+	{
+		cout << "wrng file" << endl;
+	}
+	else
+	{
+		while (inputFile)
+		{
+			getline(inputFile, temp);
+			inventory[currentSize]->setupBook(temp);
+			cout << (*inventory[currentSize]) << endl << endl;
+			currentSize++;
+		}
+	}
+	inputFile.close();
 }
 
 //**************************************************************************************
