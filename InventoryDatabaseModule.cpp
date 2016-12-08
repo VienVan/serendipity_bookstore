@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "InventoryDatabaseModule.h"
-
+#include <iomanip>
 using namespace std;
 
 void InventoryDatabaseModule::userInteraction()
@@ -25,7 +25,19 @@ void InventoryDatabaseModule::userInteraction()
 				getline(cin, temp);
 				int index = inv->searchTitle(temp);
 				if (index != -1)
-					cout << "Your book is as follows:" << endl << *((*inv)[index]);
+				{
+
+					cout << setw(36) << right << "Serendipity Booksellers" << endl;
+					cout << setw(24) << right << "Book Information" << endl;
+					cout << "ISBN:             " << setw(20) << (*(*inv)[index]).getISBN() << endl;
+					cout << "Title:            " << setw(20) << (*(*inv)[index]).getTitle() << endl;
+					cout << "Author:           " << setw(20) << (*(*inv)[index]).getAuthor() << endl;
+					cout << "Publisher:        " << setw(20) << (*(*inv)[index]).getPublisher() << endl;
+					cout << "Date Added:                 " << (*(*inv)[index]).getDate() << right << endl;
+					cout << "Quantity on hand: "  << setfill(' ') << setw(20) << (*(*inv)[index]).getQuantity() << endl;
+					cout << "Wholesale Cost:   " << setw(20) << (*(*inv)[index]).getWholesale() << endl;
+					cout << "Retail Price:     " << setw(20) << (*(*inv)[index]).getWholesale() * retailmarkup << endl;
+				}
 				else
 					cout << "Your book could not be found!" << endl;
 			}break;
