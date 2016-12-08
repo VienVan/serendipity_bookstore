@@ -4,6 +4,7 @@
 #include "Book.h"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 	publisher = p;
 	date = Date(m, d, y);
 	quantity = q;
-	retail = r;
+	retailmarkup = r;
 	wholesale = r*1.3;
 }
 
@@ -57,7 +58,13 @@ ostream& operator<<(ostream& out, Book &thi)
 //Printing the Book to the file
 //and printing the Book to standard output
 {
-	out << thi.title << '\t' << thi.author << '\t' << thi.ISBN << ' ' << thi.publisher << '\t' << thi.date << ' ' << thi.quantity << ' ' << thi.wholesale << ' ';
+	out << setfill(' ') << left << setw(30) << thi.title << '\t'
+		<< left << setw(22) << thi.author << '\t'
+		<< left << setw(17) << thi.ISBN
+		<< left << setw(30) << thi.publisher
+		<< setfill('0') << setprecision(2) << left << setw(14) << thi.date << '\t'
+		<< setfill(' ') << left << setw(12) << thi.quantity
+		<< showpoint  << setprecision(2) << fixed << setw(6) << thi.wholesale << ' ';
 	return out;
 }
 
@@ -75,6 +82,5 @@ istream& operator>>(istream& in, Book&thi)
     in >> thi.date;
     in >> thi.quantity;
     in >> thi.wholesale;
-    in >> thi.retail;
 	return in;
 }

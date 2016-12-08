@@ -28,7 +28,16 @@ Inventory::Inventory(string f, double markup, double tax) {
 //This function deletes the dynamically-allocated book inventory               *
 //******************************************************************************
 Inventory::~Inventory() {
-    for (int i = 0; i < currentSize; ++i) {
+	string outfileName;
+	ofstream outputFile;
+	cout << "Please enter a path to return your new inventory:\n";
+	getline(cin, outfileName, '\n');
+	outputFile.open(outfileName);
+	for (int i = 0; i < currentSize; i++) {
+	*(inventory[i]).printOut(outputFile, i);
+	}
+	outputFile.close();
+    for (int i = 0; i < SIZE; ++i) {
         delete inventory[i];
     }
 }
@@ -54,6 +63,10 @@ void Inventory::pullInventoryFromFile(string filepath) {
 			inventory[currentSize]->setupBook(temp);
 			cout << (*inventory[currentSize]) << endl << endl;
 			currentSize++;
+			if (inputFile.peek() == 'EOF')
+			{
+				break;
+			}
 		}
 	}
 	inputFile.close();
@@ -88,10 +101,10 @@ void Inventory::deleteBook(int index)
 //This function accepts no arguements, and returns the                 *
 //total wholesale value of the entire inventory                        *
 //**********************************************************************
-double Inventory::totalWholesale() {
-    double total = 0;
-    for (int i = 0; i < SIZE; ++i) {
-        total += inventory[i]->getWholesale();
+long long Inventory::totalWholesale() {
+    long long total = 0;
+    for (int i = 0; i < currentSize; ++i) {
+        total += (inventory[i]->getWholesale())*(inventory[i]->getQuantity());
     }
     return total;
 }
@@ -212,4 +225,23 @@ ostream& operator<<(ostream &out, const Inventory &thi) {
         out << *(thi.inventory[i]) << endl << endl;
     }
     return out;
+}
+
+//**************************************************************************
+//Definition of function printFile                                         *
+//This function accepts and int (index) variable and prints                *
+//out the corresponding book in the format used when reading the file      *
+//**************************************************************************
+ostream &Inventory::printFile(ostream & out, int index) {
+	out << inventory[index]->getTitle() << '\t' 
+		<< inventory[index]->getISBN() << '\t' 
+		<< inventory[index]->getAuthor() << '\t' 
+		<< inventory[index]->getPublisher() << '\t' 
+		<< inventory[index]->getDate() << '\t' 
+		<< inventory[index]->getWholesale() << '\t' 
+		<< inventory[index]->getQuantity();
+	if (index != currentSize - 1) {
+		out << endl;
+	}
+	return out;
 }

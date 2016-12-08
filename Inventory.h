@@ -21,6 +21,8 @@ public:
     Inventory(string, double, double);
     ~Inventory();
     void pullInventoryFromFile(string);
+    ostream &printFile(ostream &, int)
+        int getCurrentSize() { return currentSize; }
     void addBook(Book input);
     void deleteBook(int index);
     int searchTitle(string);
@@ -29,9 +31,9 @@ public:
     void sortByCost();
     void sortByDate();
     friend ostream &operator<<(ostream &, const Inventory &);
-    double totalWholesale();
+    long long totalWholesale();
     
-    double totalRetail() { return totalWholesale() * retailmarkup * salestax; }
+    long long totalRetail() { return totalWholesale() * retailmarkup; }
     Book *operator[] (int index) { return inventory[index]; }
     //To throw exceptions:
     class InvalidFile {};
