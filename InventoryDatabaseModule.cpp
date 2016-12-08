@@ -86,7 +86,10 @@ void InventoryDatabaseModule::userInteraction()
 					dontadd = true;
 
 				if (!dontadd)
-					addBook(build);
+				{
+					try{ inv->addBook(build); }
+					catch (Inventory::FullInventory){ cout << "ERROR: Inventory is full" << endl; }
+				}
 			}break;
 			case 3:
 			{
@@ -191,8 +194,10 @@ void InventoryDatabaseModule::userInteraction()
 				getline(cin, temp);
 				int index = inv->searchTitle(temp);
 				if (index != -1)
-					inv->deleteBook(index);
-				else
+				{
+					try{ inv->deleteBook(index); }
+					catch (Inventory::EmptyInventory){ cout << endl << "ERROR: Inventory is empty" << endl; }
+				} else
 					cout << "Your book could not be found or deleted." << endl;
 			}break;
 			case 5:{}break;

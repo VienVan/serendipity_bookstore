@@ -69,11 +69,13 @@ bool operator<=(const Date &thi, const Date &tha)
 ostream& operator<<(ostream& out, Date &date)
 //For printing the Date to standard output
 {
-    out << setfill('0') << setw(2) << date.month << '/' << setfill('0') << setw(2) << date.day << '/' << date.year;
+    out << right <<setfill('0') << setw(2) << date.month << '/' << setfill('0') << setw(2) << date.day << '/' << date.year;
 	return out;
 }
 
 istream &operator>>(istream &in, Date &date) {
+    //For inputting the Date from the file to the inventory
+    //also for entering the Date manually
     string input;
     in >> input;
     //For the sake of error handling:

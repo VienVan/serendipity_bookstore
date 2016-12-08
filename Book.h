@@ -15,10 +15,10 @@ private:
 	Date date;
 	int quantity;
 	double wholesale;
-    	double retailmarkup, 
+	double retailmarkup;
 	double salestax;
 public:
-	Book() {retailmarkup = 1.3; salestax = 1.0875; }
+	Book() {/*retailmarkup = 1.3; salestax = 1.0875; */}
 	void setupBook(string a);
 	Book(string a, string t, string i, string p, int d, int m, int y, int q, double r);
 	friend ostream& operator<< (ostream &, Book &);
@@ -38,7 +38,8 @@ public:
 	void setWholesale(double w) { wholesale = w; }
 	void setPublisher(string p) { publisher = p;}
 	void setDate(Date d) { date = d; }
-	ostream &printBook(ostream &);
+    class Inventory;
+    ostream &printBook(ostream &);
 };
 
 

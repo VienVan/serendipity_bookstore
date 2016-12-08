@@ -30,9 +30,9 @@ Inventory::Inventory(string f, double markup, double tax) {
 Inventory::~Inventory() {
     string outfileName;
     ofstream outputFile;
-    cout << "Please enter a path to return your updated inventory:\n";
-    getline(cin, outfileName, '\n');
-    outputFile.open(outfileName);
+	cout << "Please enter a path to return your updated inventory:\n";
+	getline(cin, outfileName, '\n');
+	outputFile.open(outfileName);
     for (int i = 0; i < currentSize; i++) {
         inventory[i]->printBook(outputFile);
 	    outputFile << endl;
@@ -51,11 +51,10 @@ Inventory::~Inventory() {
 void Inventory::pullInventoryFromFile(string filepath) {
 	ifstream inputFile;
 	string temp;
-	string temp2 = "books.txt";
-	inputFile.open(temp2);
+	inputFile.open(filepath);
 	if (!inputFile)
 	{
-		cout << "wrng file" << endl;
+		cout << "FILE ERROR" << endl;
 	}
 	else
 	{
@@ -63,7 +62,6 @@ void Inventory::pullInventoryFromFile(string filepath) {
 		{
 			getline(inputFile, temp);
 			inventory[currentSize]->setupBook(temp);
-			cout << (*inventory[currentSize]) << endl << endl;
 			currentSize++;
 			if (inputFile.peek() == 'EOF')
 			{
@@ -81,7 +79,7 @@ void Inventory::pullInventoryFromFile(string filepath) {
 void Inventory::addBook(Book input)
 {
     if (currentSize == SIZE) throw FullInventory();
-    *inventory[currentSize] = input;
+    *(inventory[currentSize]) = input;
     currentSize++;
 }
 
@@ -91,11 +89,13 @@ void Inventory::addBook(Book input)
 //****************************************************************************************
 void Inventory::deleteBook(int index)
 {
-    if (currentSize == 0) throw EmptyInventory();
-    for (;index < SIZE - 1; index++) {
-        inventory[index] = inventory[index + 1];
-    }
-    currentSize--;
+	if (currentSize == 0) throw EmptyInventory();
+	delete inventory[index];
+	for (; index < SIZE - 1; index++) {
+		inventory[index] = inventory[index + 1];
+	}
+	inventory[index] = new Book;
+	currentSize--;
 }
 
 //**********************************************************************
