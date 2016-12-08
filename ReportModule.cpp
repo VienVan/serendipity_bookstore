@@ -23,11 +23,12 @@ void ReportModule::userInteraction()
 			}break;
 			case 2:
 			{
-				cout << fixed << setprecision(2) << "The total wholesale value of the inventory is: " << inv->totalWholesale();
+				cout << *inv;
+				cout << setw(10) << fixed << setprecision(2) << "The total wholesale value of the inventory is: " << inv->totalWholesale() << endl;
 			}break;
 			case 3:
 			{
-				cout << fixed << setprecision(2) << "The total retail value of the inventory is: " << inv->totalWholesale()*retailmarkup*salestax;
+				cout << setw(10) << fixed << setprecision(2) << "The total retail value of the inventory is: " << inv->totalWholesale()*retailmarkup*salestax << endl;
 			}break;
 			case 4:
 			{
