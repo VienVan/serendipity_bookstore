@@ -27,60 +27,37 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 //******************************************************************************
 void Book::setupBook(string a)
 {
-	int tab_count = 0;
-	string temp;
+	string td, tm, ty;
+	int tqu, twh;
+	string temp = a;
 
-	string retail2;
-	string date2;
-	for (int i = 0; i < a.size(); i++)
-	{
-		if (a[i] == '\t')
-		{
-			tab_count++;
-		}
-		else
-		{
-			switch (tab_count)
-			{
-			case 0:
-				title += a[i];
-				break;
-			case 1:
-				ISBN += a[i];
-				break;
-			case 2:
-				author += a[i];
-				break;
-			case 3:
-				publisher += a[i];
-				break;
-			case 4:
-				date2 += a[i];
-				break;
-			case 5:
-				retail2 += a[i];
-				break;
-			case 6:
-				temp += a[i];
-				break;
-			default:
-				break;
-			}
-		}
-	}
-    try {
-	date = Date(date2);
-    }
-    catch (string hey) { cout << hey; }
-	quantity = stoi(temp);
-	wholesale = retail*1.3;
+	title = temp.substr(0, temp.find('\t'));
+	temp = temp.substr(temp.find('\t') + 1, temp.find('\n'));
+	ISBN = temp.substr(0, temp.find('\t'));
+	temp = temp.substr(temp.find('\t') + 1, temp.find('\n'));
+	author = temp.substr(0, temp.find('\t'));
+	temp = temp.substr(temp.find('\t') + 1, temp.find('\n'));
+	publisher = temp.substr(0, temp.find('\t'));
+	temp = temp.substr(temp.find('\t') + 1, temp.find('\n'));
+	tm = temp.substr(0, temp.find('/'));
+	temp = temp.substr(temp.find('/') + 1, temp.find('\n'));
+	td = temp.substr(0, temp.find('/'));
+	temp = temp.substr(temp.find('/') + 1, temp.find('\n'));
+	ty = temp.substr(0, temp.find('/'));
+	date = Date(atoi(tm.c_str()), atoi(td.c_str()), atoi(ty.c_str()));
+	temp = temp.substr(temp.find('\t') + 1, temp.find('\n'));
+	wholesale = atoi(temp.substr(0, temp.find('\t')).c_str());
+	temp = temp.substr(temp.find('.') + 1, temp.find('\n'));
+	wholesale += double(atoi(temp.substr(0, temp.find('\t')).c_str()))/100;
+	temp = temp.substr(temp.find('\t') + 1, temp.find('\n'));
+	quantity = atoi(temp.substr(0, temp.find('\t')).c_str());
 }
 
 ostream& operator<<(ostream& out, Book &thi)
 //Printing the Book to the file
 //and printing the Book to standard output
 {
-	out << thi.title << '\t' << thi.author << '\t' << thi.ISBN << ' ' << thi.publisher << '\t' << thi.date << ' ' << thi.quantity << ' ' << thi.wholesale << ' ' << thi.retail << ' ';
+	out << thi.title << '\t' << thi.author << '\t' << thi.ISBN << ' ' << thi.publisher << '\t' << thi.date << ' ' << thi.quantity << ' ' << thi.wholesale << ' ';
 	return out;
 }
 
