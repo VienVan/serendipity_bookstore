@@ -15,7 +15,7 @@ private:
 	Date date;
 	int quantity;
 	double wholesale;
-	double retail;
+    double retailmarkup = 1.3, salestax = 1.0875;
 public:
 	Book() {}
 	void setupBook(string a);
@@ -29,13 +29,12 @@ public:
 	Date getDate() { return date; }
 	int getQuantity() { return quantity; }
 	double getWholesale() { return wholesale; }
-	double getRetail() { return retail; }
+	double getRetail() { return wholesale * retailmarkup * salestax; }
 	void setAuthor(string a) { author = a; }
 	void setTitle(string t) { title = t; }
 	void setISBN(string i) { ISBN = i; }
 	void setQuantity(int q) { quantity = q; }
 	void setWholesale(double w) { wholesale = w; }
-	void setRetail(double r) { retail = r; }
 	void setPublisher(string p) { publisher = p;}
 	void setDate(Date d) { date = d; }
 };
