@@ -29,7 +29,6 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 void Book::setupBook(string a)
 {
 	string td, tm, ty;
-	int tqu, twh;
 	string temp = a;
 
 	title = temp.substr(0, temp.find('\t'));
