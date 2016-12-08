@@ -84,3 +84,21 @@ istream& operator>>(istream& in, Book&thi)
     in >> thi.wholesale;
 	return in;
 }
+
+//**************************************************************************
+//Definition of function printFile                                         *
+//This function accepts and int (index) variable and prints                *
+//out the corresponding book in the format used when reading the file      *
+//**************************************************************************
+
+ostream &Book::printBook(ostream & out) {
+    out << title << '\t'
+    << ISBN << '\t'
+    << author << '\t'
+    << publisher << '\t'
+    << date << '\t'
+    << wholesale << '\t'
+    << quantity;
+    return out;
+}
+
