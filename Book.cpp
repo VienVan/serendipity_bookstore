@@ -27,13 +27,11 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 //******************************************************************************
 void Book::setupBook(string a)
 {
-	int slash_count = 0;
 	int tab_count = 0;
 	string temp;
 
 	string retail2;
 	string date2;
-	int d, m, y;
 	for (int i = 0; i < a.size(); i++)
 	{
 		if (a[i] == '\t')
@@ -70,7 +68,10 @@ void Book::setupBook(string a)
 			}
 		}
 	}
+    try {
 	date = Date(date2);
+    }
+    catch (string hey) { cout << hey; }
 	quantity = stoi(temp);
 	wholesale = retail*1.3;
 }

@@ -28,7 +28,7 @@ Date::Date(string s)
 		m = s.substr(0, 2);
 		d = s.substr(3, 2);
 		y = s.substr(6, 4);
-		setDate(atoi(m.c_str()), atoi(d.c_str()), atoi( y.c_str()) );
+		setDate(stoi(m), stoi(d), stoi(y));
 	}
 
 }

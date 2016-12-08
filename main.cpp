@@ -6,8 +6,10 @@
 
 using namespace std;
 
+
 int main()
 {
+    
 		string filepath;
     cout << "Please enter the path to the inventory file:\n";
     getline(cin, filepath);
@@ -15,5 +17,6 @@ int main()
     runner->userInteraction();
     delete runner;
     runner = nullptr;
+
 	return 0;
 }

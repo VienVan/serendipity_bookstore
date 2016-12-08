@@ -52,10 +52,6 @@ void Inventory::pullInventoryFromFile(string filepath) {
             inventory[i]->setupBook(temp);
         }
     }
-    for (int count = 0; count < SIZE; ++count) {
-        inputFile >> *inventory[count];
-        ++currentSize;
-    }
     inputFile.close();
 }
 
@@ -67,6 +63,7 @@ void Inventory::addBook(Book input)
 {
     if (currentSize == SIZE) throw FullInventory();
     *inventory[currentSize] = input;
+    currentSize++;
 }
 
 //****************************************************************************************
@@ -126,9 +123,9 @@ int Inventory::searchTitle(string title) {
 void Inventory::sortByTitle() {
     int pos_min;
     Book *temp;
-    for (int i = 0; i < SIZE - 1; i++) {
+    for (int i = 0; i < currentSize - 1; i++) {
         pos_min = i;
-        for (int j = i + 1; j < SIZE; j++) {
+        for (int j = i + 1; j < currentSize; j++) {
             if (inventory[j]->getTitle() < inventory[pos_min]->getTitle())
                 pos_min = j;
         }
@@ -146,9 +143,9 @@ void Inventory::sortByTitle() {
 void Inventory::sortByQuantity() {
     int pos_min;
     Book *temp;
-	for (int i = 0; i < SIZE - 1; i++) {
+	for (int i = 0; i < currentSize - 1; i++) {
 	    pos_min = i;
-		for (int j = i + 1; j < SIZE; j++) {
+		for (int j = i + 1; j < currentSize; j++) {
 		if (inventory[j]->getQuantity() > inventory[pos_min]->getQuantity())
                    pos_min = j;
 		}
@@ -167,9 +164,9 @@ void Inventory::sortByQuantity() {
 void Inventory::sortByCost() {
     int pos_min;
     Book *temp;
-    for (int i = 0; i < SIZE - 1; i++) {
+    for (int i = 0; i < currentSize - 1; i++) {
         pos_min = i;
-        for (int j = i + 1; j < SIZE; j++) {
+        for (int j = i + 1; j < currentSize; j++) {
             if (inventory[j]->getWholesale() > inventory[pos_min]->getWholesale())
                 pos_min = j;
         }
@@ -188,9 +185,9 @@ void Inventory::sortByCost() {
 void Inventory::sortByDate() {
     int pos_min;
     Book *temp;
-    for (int i = 0; i < SIZE - 1; i++) {
+    for (int i = 0; i < currentSize - 1; i++) {
         pos_min = i;
-        for (int j = i + 1; j < SIZE; j++) {
+        for (int j = i + 1; j < currentSize; j++) {
             if (inventory[j]->getDate() < inventory[pos_min]->getDate())
                 pos_min = j;
         }
