@@ -21,6 +21,7 @@ public:
     void userInteraction();
     double getTotal();
     void printScreen();
+    void updateInventory();
 };
 
 #endif
