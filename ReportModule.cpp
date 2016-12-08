@@ -23,11 +23,16 @@ void ReportModule::userInteraction()
 			}break;
 			case 2:
 			{
-				cout << *inv;
+				cout << setfill(' ');
+				for (int x = 0; x < inv->getCurrentSize(); x++)
+					cout << setw(30) << (*(*inv)[x]).getTitle() << ' ' << setw(12) << fixed << showpoint << setprecision(2) << (*(*inv)[x]).getWholesale() * (*(*inv)[x]).getQuantity() << endl;
 				cout << setw(10) << fixed << setprecision(2) << "The total wholesale value of the inventory is: " << inv->totalWholesale() << endl;
 			}break;
 			case 3:
 			{
+				cout << setfill(' ');
+				for (int x = 0; x < inv->getCurrentSize(); x++)
+					cout << setw(30) << (*(*inv)[x]).getTitle() << ' ' << setw(12) << fixed << showpoint << setprecision(2) << (*(*inv)[x]).getWholesale() * (*(*inv)[x]).getQuantity()* retailmarkup << endl;
 				cout << setw(10) << fixed << setprecision(2) << "The total retail value of the inventory is: " << inv->totalWholesale()*retailmarkup*salestax << endl;
 			}break;
 			case 4:
