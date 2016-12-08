@@ -24,7 +24,10 @@ void InventoryDatabaseModule::userInteraction()
 				cout << "Enter the title of the book you would like to look up: ";
 				getline(cin, temp);
 				int index = inv->searchTitle(temp);
-				cout << "Your book is as follows:" << endl << *((*inv)[index]);
+				if (index != -1)
+					cout << "Your book is as follows:" << endl << *((*inv)[index]);
+				else
+					cout << "Your book could not be found!" << endl;
 			}break;
 			case 2:
 			{
@@ -63,86 +66,97 @@ void InventoryDatabaseModule::userInteraction()
 			}break;
 			case 3:
 			{
-				cout << "Enter the title of the book you would like to edit: ";
+				cout << endl << "Enter the title of the book you would like to edit: ";
 				getline(cin, temp);
-				cout << temp;
-				Book * build = (*inv)[(inv->searchTitle(temp))];
-				cout << *build;
-				string choice2;
-				do
+				int index = (inv->searchTitle(temp));
+				if (index != -1)
 				{
-					cout << "Edit Book Menu" << endl
-						<< "1. Edit Title" << endl
-						<< "2. Edit Author" << endl
-						<< "3. Edit ISBN" << endl
-						<< "4. Edit Publisher" << endl
-						<< "5. Edit Date" << endl
-						<< "6. Edit Quantity" << endl
-						<< "7. Edit Wholesale Value" << endl
-						<< "8. Return to Inventory Database Module";
-					getline(cin, choice2);
-					
-					switch (atoi(choice2.c_str()))
+					Book * build = (*inv)[index];
+
+					string choice2;
+					do
 					{
+						cout << endl << "Edit Book Menu" << endl
+							<< "1. Edit Title" << endl
+							<< "2. Edit Author" << endl
+							<< "3. Edit ISBN" << endl
+							<< "4. Edit Publisher" << endl
+							<< "5. Edit Date" << endl
+							<< "6. Edit Quantity" << endl
+							<< "7. Edit Wholesale Value" << endl
+							<< "8. Return to Inventory Database Module" << endl
+							<< "Enter Your Choice: ";
+						getline(cin, choice2);
+						switch (atoi(choice2.c_str()))
+						{
 						case 1:
 						{
-							cout << "Your current book's data is:" << endl << *build;
+							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new title: ";
 							getline(cin, temp);
 							build->setTitle(temp);
 						}break;
 						case 2:
 						{
-								  cout << "Your current book's data is:" << endl << *build;
-								  cout << "Enter a new author: ";
-								  getline(cin, temp);
-								  build->setAuthor(temp);
+							cout << "Your book currently holds the data values: " << endl << *build << endl;
+							cout << "Enter a new author: ";
+							getline(cin, temp);
+							build->setAuthor(temp);
 						}break;
 						case 3:
 						{
-								  cout << "Your current book's data is:" << endl << *build;
-								  cout << "Enter a new ISBN: ";
-								  getline(cin, temp);
-								  build->setISBN(temp);
+							cout << "Your book currently holds the data values: " << endl << *build << endl;
+							cout << "Enter a new ISBN: ";
+							getline(cin, temp);
+							build->setISBN(temp);
 						}break;
 						case 4:
 						{
-								  cout << "Your current book's data is:" << endl << *build;
-								  cout << "Enter a new publisher: ";
-								  getline(cin, temp);
-								  build->setPublisher(temp);
+							cout << "Your book currently holds the data values: " << endl << *build << endl;
+							cout << "Enter a new publisher: ";
+							getline(cin, temp);
+							build->setPublisher(temp);
 						}break;
 						case 5:
 						{
-								  cout << "Your current book's data is:" << endl << *build;
-								  cout << "Enter a new date in the format MM/DD/YYYY e.g. 04/05/1998: ";
-								  getline(cin, temp);
-								  build->setDate(Date(temp));
+							cout << "Your book currently holds the data values: " << endl << *build << endl;
+							cout << "Enter a new date in the format MM/DD/YYYY e.g. 04/05/1998: ";
+							getline(cin, temp);
+							build->setDate(Date(temp));
 						}break;
 						case 6:
 						{
-								  cout << "Your current book's data is:" << endl << *build;
-								  cout << "Enter a new quantity: ";
-								  getline(cin, temp);
-								  build->setQuantity(atoi(temp.c_str()));
+							cout << "Your book currently holds the data values: " << endl << *build << endl;
+							cout << "Enter a new quantity: ";
+							getline(cin, temp);
+							build->setQuantity(atoi(temp.c_str()));
 						}break;
 						case 7:
 						{
-								  cout << "Your current book's data is:" << endl << *build;
-								  cout << "Enter a new author: ";
-								  getline(cin, temp);
-								  build->setWholesale(atoi(temp.c_str()));
+							cout << "Your book currently holds the data values: " << endl << *build << endl;
+							cout << "Enter a new author: ";
+							getline(cin, temp);
+							build->setWholesale(atoi(temp.c_str()));
 						}break;
+						case 8:{ }break;
 						default:{ cout << endl << "INPUT ERROR" << endl; }
-					}
-				} while (atoi(choice2.c_str()) != 8);
+						}
+					} while (atoi(choice2.c_str()) != 8);
+				}
+				else
+					cout <<  endl << "Your title could not be found." << endl;
 			}break;
 			case 4: 
 			{
-					  cout << "Enter the title of the book you would like to delete: ";
-					  getline(cin, temp);
-					  deleteBook(temp);
+				cout << "Enter the title of the book you would like to delete: ";
+				getline(cin, temp);
+				int index = inv->searchTitle(temp);
+				if (index != -1)
+					inv->deleteBook(index);
+				else
+					cout << "Your book could not be found or deleted." << endl;
 			}break;
+			case 5:{}break;
 			default:{ cout << endl << "INPUT ERROR" << endl; }
 		}
 	} while (atoi(choice.c_str()) != 5);
