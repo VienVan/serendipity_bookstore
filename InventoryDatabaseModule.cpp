@@ -35,18 +35,26 @@ void InventoryDatabaseModule::userInteraction()
 				Book build;
 				cout << "Enter the title of the book you would like to add: ";
 				getline(cin, temp);
+				if (temp.length() > 30)
+					temp = temp.substr(0, 30);
 				build.setTitle(temp);
 
 				cout << "Enter the author of the book you would like to add: ";
 				getline(cin, temp);
+				if (temp.length() > 30)
+					temp = temp.substr(0, 30);
 				build.setAuthor(temp);
 
 				cout << "Enter the ISBN of the book you would like to add: ";
 				getline(cin, temp);
+				if (temp.length() > 13)
+					temp = temp.substr(0, 13);
 				build.setISBN(temp);
 			
 				cout << "Enter the publisher of the book you would like to add: ";
 				getline(cin, temp);
+				if (temp.length() > 30)
+					temp = temp.substr(0, 30);
 				build.setPublisher(temp);
 
 				cout << "Enter the current date in MM/DD/YYYY format. e.g. 04/03/1990: ";
