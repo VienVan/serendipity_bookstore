@@ -9,8 +9,7 @@ using namespace std;
 
 int main()
 {
-    
-		string filepath;
+    string filepath;
     cout << "Please enter the path to the inventory file:\n";
     getline(cin, filepath);
     Module *runner = new ControlModule(filepath);

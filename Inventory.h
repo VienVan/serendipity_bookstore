@@ -16,18 +16,18 @@ private:
     double salestax;
     int currentSize;
     string filepath;
-
+    
 public:
     Inventory(string, double, double);
     ~Inventory();
-	void pullInventoryFromFile(string);
+    void pullInventoryFromFile(string);
     void addBook(Book input);
     void deleteBook(int index);
     int searchTitle(string);
     void sortByTitle();
-	void sortByQuantity();
-	void sortByCost();
-	void sortByDate();
+    void sortByQuantity();
+    void sortByCost();
+    void sortByDate();
     friend ostream &operator<<(ostream &, const Inventory &);
     double totalWholesale();
     

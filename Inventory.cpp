@@ -43,7 +43,7 @@ void Inventory::pullInventoryFromFile(string filepath) {
     inputFile.open(filepath);
     if(!inputFile) throw InvalidFile();
     
-    for(int i = -1; inputFile.peek() != EOF; i++)
+    for(int i = -1; i < 25; i++)
     {
         if(i == -1)
             getline(inputFile,temp,'\n');
@@ -143,18 +143,18 @@ void Inventory::sortByTitle() {
 void Inventory::sortByQuantity() {
     int pos_min;
     Book *temp;
-	for (int i = 0; i < currentSize - 1; i++) {
-	    pos_min = i;
-		for (int j = i + 1; j < currentSize; j++) {
-		if (inventory[j]->getQuantity() > inventory[pos_min]->getQuantity())
-                   pos_min = j;
-		}
-            if (pos_min != i) {
-                 temp = inventory[i];
-                 inventory[i] = inventory[pos_min];
-                 inventory[pos_min] = temp;
-            }
-	}
+    for (int i = 0; i < currentSize - 1; i++) {
+        pos_min = i;
+        for (int j = i + 1; j < currentSize; j++) {
+            if (inventory[j]->getQuantity() > inventory[pos_min]->getQuantity())
+                pos_min = j;
+        }
+        if (pos_min != i) {
+            temp = inventory[i];
+            inventory[i] = inventory[pos_min];
+            inventory[pos_min] = temp;
+        }
+    }
 }
 
 //*****************************************************************************************
@@ -205,9 +205,7 @@ void Inventory::sortByDate() {
 //*******************************************************************
 ostream& operator<<(ostream &out, const Inventory &thi) {
     for (int i = 0; i < thi.currentSize; ++i) {
-        cout << *(thi.inventory[i]) << endl << endl;
+        out << *(thi.inventory[i]) << endl << endl;
     }
-    return cout;
+    return out;
 }
-
-

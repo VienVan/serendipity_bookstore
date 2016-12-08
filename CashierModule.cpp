@@ -22,9 +22,8 @@ void CashierModule::userInteraction()
         getline(cin, title);
         cout << "Quantity: " << endl;
         cin  >> quantity;
-        cout << "Continue? y or n: ";
+        cout << "Continue? Y or N: ";
         cin  >> y;
-        cout << y;
         if(y == 'y' || y == 'Y')
         {
             wantToContinue = true;
