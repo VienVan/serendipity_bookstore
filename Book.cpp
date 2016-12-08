@@ -17,8 +17,9 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 	publisher = p;
 	date = Date(m, d, y);
 	quantity = q;
-	retailmarkup = r;
-	wholesale = r*1.3;
+	wholesale = r;
+	retailmarkup = 1.3;
+	salestax = 1.0875;
 }
 
 //******************************************************************************
