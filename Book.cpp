@@ -4,6 +4,7 @@
 #include "Book.h"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -57,7 +58,13 @@ ostream& operator<<(ostream& out, Book &thi)
 //Printing the Book to the file
 //and printing the Book to standard output
 {
-	out << thi.title << '\t' << thi.author << '\t' << thi.ISBN << ' ' << thi.publisher << '\t' << thi.date << ' ' << thi.quantity << ' ' << thi.wholesale << ' ';
+	out << setfill(' ') << left << setw(30) << thi.title << '\t'
+		<< left << setw(22) << thi.author << '\t'
+		<< left << setw(17) << thi.ISBN
+		<< left << setw(30) << thi.publisher
+		<< setfill('0') << setprecision(2) << left << setw(14) << thi.date << '\t'
+		<< setfill(' ') << left << setw(12) << thi.quantity
+		<< showpoint  << setprecision(2) << fixed << setw(6) << thi.wholesale << ' ';
 	return out;
 }
 
