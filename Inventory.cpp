@@ -35,8 +35,8 @@ Inventory::~Inventory() {
     outputFile.open(outfileName);
     for (int i = 0; i < currentSize; i++) {
         inventory[i]->printBook(outputFile);
+	    outputFile << endl;
     }
-    outputFile << endl;
     
     outputFile.close();
     for (int i = 0; i < SIZE; ++i) {
