@@ -28,7 +28,7 @@ Inventory::Inventory(string f, double markup, double tax) {
 //This function deletes the dynamically-allocated book inventory               *
 //******************************************************************************
 Inventory::~Inventory() {
-    for (int i = 0; i < currentSize; ++i) {
+    for (int i = 0; i < SIZE; ++i) {
         delete inventory[i];
     }
 }
@@ -54,6 +54,10 @@ void Inventory::pullInventoryFromFile(string filepath) {
 			inventory[currentSize]->setupBook(temp);
 			cout << (*inventory[currentSize]) << endl << endl;
 			currentSize++;
+			if (inputFile.peek() == 'EOF')
+			{
+				break;
+			}
 		}
 	}
 	inputFile.close();
