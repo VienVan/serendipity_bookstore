@@ -28,7 +28,7 @@ Inventory::Inventory(string f, double markup, double tax) {
 //This function deletes the dynamically-allocated book inventory               *
 //******************************************************************************
 Inventory::~Inventory() {
-    for (int i = 0; i < SIZE; ++i) {
+    for (int i = 0; i < currentSize; ++i) {
         delete inventory[i];
     }
 }
@@ -104,7 +104,7 @@ double Inventory::totalWholesale() {
 int Inventory::searchTitle(string title) {
     int index = -1;
     sortByTitle();
-    int min = 0, max = SIZE - 1, midpoint = 0;
+    int min = 0, max = currentSize - 1, midpoint = 0;
     while (min <= max && index == -1) {
         midpoint = min + (max - min)/2;
         if (title == inventory[midpoint]->getTitle()) {
