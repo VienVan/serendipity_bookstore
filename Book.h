@@ -29,7 +29,7 @@ public:
 	Date getDate() { return date; }
 	int getQuantity() { return quantity; }
 	double getWholesale() { return wholesale; }
-	double getRetail() { return wholesale * retailmarkup * salestax; }
+	double getRetail() { return wholesale * retailmarkup; }
 	void setAuthor(string a) { author = a; }
 	void setTitle(string t) { title = t; }
 	void setISBN(string i) { ISBN = i; }
