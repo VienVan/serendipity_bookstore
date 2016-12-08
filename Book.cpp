@@ -16,7 +16,7 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 	publisher = p;
 	date = Date(m, d, y);
 	quantity = q;
-	retail = r;
+	retailmarkup = r;
 	wholesale = r*1.3;
 }
 
@@ -75,6 +75,5 @@ istream& operator>>(istream& in, Book&thi)
     in >> thi.date;
     in >> thi.quantity;
     in >> thi.wholesale;
-    in >> thi.retail;
 	return in;
 }
