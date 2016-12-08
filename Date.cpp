@@ -74,8 +74,6 @@ ostream& operator<<(ostream& out, Date &date)
 }
 
 istream &operator>>(istream &in, Date &date) {
-    //For inputting the Date from the file to the inventory
-    //also for entering the Date manually
     string input;
     in >> input;
     //For the sake of error handling:
