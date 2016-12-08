@@ -10,6 +10,10 @@ ControlModule::ControlModule(string filepath)
     im = new InventoryDatabaseModule(I);
 }
 
+//*******************************************************************
+//Definition of Control Module Class Destructor                     *
+//This deconstructor un-allocates memory used by the program        *
+//*******************************************************************
 ControlModule::~ControlModule()
 {
     delete I;
@@ -22,7 +26,10 @@ ControlModule::~ControlModule()
     rm = nullptr;
 }
 
-
+//*******************************************************************
+//Definition of member function userInteraction                     *
+//This function interacts with the user                             *
+//*******************************************************************
 void ControlModule::userInteraction()
 {
     string choice;
