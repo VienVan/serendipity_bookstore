@@ -15,9 +15,10 @@ private:
 	Date date;
 	int quantity;
 	double wholesale;
-    double retailmarkup = 1.3, salestax = 1.0875;
+    	double retailmarkup, 
+	double salestax;
 public:
-	Book() {}
+	Book() {retailmarkup = 1.3; salestax = 1.0875; }
 	void setupBook(string a);
 	Book(string a, string t, string i, string p, int d, int m, int y, int q, double r);
 	friend ostream& operator<< (ostream &, Book &);
