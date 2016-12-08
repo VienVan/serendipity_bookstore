@@ -21,6 +21,7 @@ public:
     Inventory(string, double, double);
     ~Inventory();
     void pullInventoryFromFile(string);
+    ostream &printFile(ostream &, int)
         int getCurrentSize() { return currentSize; }
     void addBook(Book input);
     void deleteBook(int index);
