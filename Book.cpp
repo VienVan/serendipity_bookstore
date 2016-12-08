@@ -21,9 +21,9 @@ Book::Book(string a, string t, string i, string p, int d, int m, int y, int q, d
 }
 
 //******************************************************************************
-//Definition of Secondary Book constructor			                           *
+//Definition of member function setupBook			               *
 //The constructor takes one arguement from the file and breaks it down into    *
-//author, title, isbn,date,quantity,retail,wholesale                           *
+//author, title, isbn, date, quantity, retail, wholesale                       *
 //******************************************************************************
 void Book::setupBook(string a)
 {
