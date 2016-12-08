@@ -1,63 +1,27 @@
-#define _CRT_SECURE_NO_WARNINGS
+#ifndef _CASHIERMODULE_H
+#define _CASHIERMODULE_H
 
-#include <iostream>
-#include <string>
-#include "CashierModule.h"
-
-using namespace std;
-
-CashierModule::CashierModule()
+#include "Book.h"
+#include "Inventory.h"
+#include "Module.h"
+class CashierModule : public Module
 {
-    userInteraction();
-}
-void CashierModule::userInteraction()
-{
-    bool wantToContinue = false;
-    char y;
-    do
-    {
-        wantToContinue = false;
-        cout << "Book Title: " << endl;
-        cin.ignore();
-        getline(cin, title);
-        cout << "Quantity: " << endl;
-        cin  >> quantity;
-        cout << "Continue? Y or N: ";
-        cin  >> y;
-        if(y == 'y' || y == 'Y')
-        {
-            wantToContinue = true;
-        }
-        if(inv->searchTitle(title) != -1)
-        {
-            books[titles] = inv->searchTitle(title);
-            bookQuantity[titles] = quantity;
-            cout << books[titles] << endl;
-            titles++;
-        }
-        else if(inv->searchTitle(title) == -1)
-        {
-            cout << "We don't have that book." << endl;
-        }
+private:
+    int quantity;
+    string title;
+    int titles = 0;
+    int bookIndices[1024];
+    int bookQuantity[1024];
+    int totalBooks = 0;
+    double totalPrice = 0.0;
 
-    } while(wantToContinue);
-}
+public:
+    CashierModule(Inventory *i) : Module(i){};
+    CashierModule();
+    void userInteraction();
+    double getTotal();
+    void printScreen();
+    void updateInventory();
+};
 
-double CashierModule::getTotal()
-{
-    double price;
-    total = 0.0;
-    for(int i = 0; i < titles; i++)
-    {
-        totalBooks += bookQuantity[i];
-        price = (*(*inv)[books[i]]).getWholesale() * bookQuantity[i];
-        total += price * retailmarkup * salestax;
-    }
-    return total;
-}
-
-void CashierModule::printTotal()
-{
-
-
-}
+#endif
