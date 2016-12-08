@@ -45,25 +45,25 @@ void Book::setupBook(string a)
 			switch (tab_count)
 			{
 			case 0:
-				title[i] = a[i];
+				title += a[i];
 				break;
 			case 1:
-				ISBN[i] = a[i];
+				ISBN += a[i];
 				break;
 			case 2:
-				author[i] = a[i];
+				author += a[i];
 				break;
 			case 3:
-				publisher[i] = a[i];
+				publisher += a[i];
 				break;
 			case 4:
-				date2[i] = a[i];
+				date2 += a[i];
 				break;
 			case 5:
-				retail2[i] = a[i];
+				retail2 += a[i];
 				break;
 			case 6:
-				temp[i] = a[i];
+				temp += a[i];
 				break;
 			default:
 				break;
