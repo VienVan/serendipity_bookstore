@@ -1,6 +1,6 @@
 Title           ISBN            Author          Publisher                   Date:       Price:  Quantity:
 First 100 Words	9780312510787	Roger Priddy	Priddy Books Brdbk edition	10/04/2016	3.92	25	
-The Life-Changing Magic of T.	9781607747307	Marie Kondo Ten Speed Press	10/22/2014	10.92   15
+The Life-Changing Magic of T.	9781607747307	Marie Kondo	Ten Speed Press	10/22/2014	10.92   15
 1944    9781439114087   WINIK JAY   SIMON & SCHUSTER    06/07/2014   35.00   7
 BACKPACK, A BEAR, AND.  9780385537773   LEV GOLINKIN    RANDOM HOUSE INC    07/20/2012   25.95   9
 STICKEEN    9780930588489   MUIR JOHN	    PERSEUS DISTRIBUTION SERVICES   10/29/2011    9.00    5
