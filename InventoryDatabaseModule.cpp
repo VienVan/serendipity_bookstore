@@ -31,6 +31,7 @@ void InventoryDatabaseModule::userInteraction()
 			}break;
 			case 2:
 			{
+				bool dontadd = false;
 				Book build;
 				cout << "Enter the title of the book you would like to add: ";
 				getline(cin, temp);
@@ -50,19 +51,34 @@ void InventoryDatabaseModule::userInteraction()
 
 				cout << "Enter the current date in MM/DD/YYYY format. e.g. 04/03/1990: ";
 				getline(cin, temp);
-				build.setDate(Date(temp));
+				try{
+					Date d = Date(temp);
+					build.setDate(Date(temp));
+				}
+				catch (...)
+				{
+					dontadd = true;
+				}
 
 				cout << "Enter the quantity of books to add: ";
 				getline(cin, temp);
-				build.setQuantity(atoi(temp.c_str()));
+				int t = atoi(temp.c_str());
+				if (t > 0)
+					build.setQuantity(atoi(temp.c_str()));
+				else
+					dontadd = true;
 
 				cout << "Enter the wholesale value of the book to add: ";
 				double d;
 				cin >> d;
 				cin.ignore();
-				build.setWholesale(d);
-				  
-				addBook(build);
+				if (d > 0)
+					build.setWholesale(d);
+				else
+					dontadd = true;
+
+				if (!dontadd)
+					addBook(build);
 			}break;
 			case 3:
 			{
@@ -122,21 +138,36 @@ void InventoryDatabaseModule::userInteraction()
 							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new date in the format MM/DD/YYYY e.g. 04/05/1998: ";
 							getline(cin, temp);
-							build->setDate(Date(temp));
+							try{
+								Date d = Date(temp);
+								build->setDate(Date(temp));
+							}
+							catch (...)
+							{
+								cout << "INVALID VALUE" << endl;
+							}
 						}break;
 						case 6:
 						{
 							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new quantity: ";
 							getline(cin, temp);
-							build->setQuantity(atoi(temp.c_str()));
+							int t = atoi(temp.c_str());
+							if (t > 0)
+								build->setQuantity(atoi(temp.c_str()));
+							else
+								cout << "INVALID VALUE" << endl;
 						}break;
 						case 7:
 						{
 							cout << "Your book currently holds the data values: " << endl << *build << endl;
-							cout << "Enter a new author: ";
+							cout << "Enter a new wholesale value: ";
 							getline(cin, temp);
-							build->setWholesale(atoi(temp.c_str()));
+							int t = atoi(temp.c_str());
+							if (t > 0)
+								build->setWholesale(atoi(temp.c_str()));
+							else
+								cout << "INVALID VALUE" << endl;
 						}break;
 						case 8:{ }break;
 						default:{ cout << endl << "INPUT ERROR" << endl; }
