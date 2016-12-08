@@ -12,9 +12,11 @@ using namespace std;
 //Definition of Inventory Class Default Constructor                            *
 //The constructor takes no arguments and pulls an inventory from a file        *
 //******************************************************************************
-Inventory::Inventory(string f) {
+Inventory::Inventory(string f, double markup, double tax) {
     currentSize = 0;
     filepath = f;
+    retailmarkup = markup;
+    salestax = tax;
     for (int i = 0; i < SIZE; ++i) {
        	inventory[i] = new Book;
     }
