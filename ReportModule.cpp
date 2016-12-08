@@ -1,12 +1,12 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "ReportModule.h"
-
+#include <iomanip>
 void ReportModule::userInteraction()
 {
 	string choice;
 	do{
 		cout << "\n\tSerendipity Booksellers\n\t\t Reports" << endl
-			 << "1. Inventory Listing" << endl
+			 << "1. Inventory Listing By Title" << endl
 			 << "2. Inventory Wholesale Value" << endl
 			 << "3. Inventory Retail Value" << endl
 			 << "4. Listing by Quantity" << endl
@@ -18,16 +18,16 @@ void ReportModule::userInteraction()
         switch (atoi(choice.c_str())) {
 			case 1:
 			{
+				inv->sortByTitle();
 				cout << *inv;
 			}break;
 			case 2:
 			{
-				cout << *inv;
+				cout << fixed << setprecision(2) << "The total wholesale value of the inventory is: " << inv->totalWholesale();
 			}break;
 			case 3:
 			{
-				inv->sortByDate();
-				cout << *inv;
+				cout << fixed << setprecision(2) << "The total retail value of the inventory is: " << inv->totalWholesale()*retailmarkup*salestax;
 			}break;
 			case 4:
 			{
