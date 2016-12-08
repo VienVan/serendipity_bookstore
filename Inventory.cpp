@@ -54,10 +54,6 @@ void Inventory::pullInventoryFromFile(string filepath) {
 			inventory[currentSize]->setupBook(temp);
 			cout << (*inventory[currentSize]) << endl << endl;
 			currentSize++;
-			if (inputFile.peek() == 'EOF')
-			{
-				break;
-			}
 		}
 	}
 	inputFile.close();
@@ -92,10 +88,10 @@ void Inventory::deleteBook(int index)
 //This function accepts no arguements, and returns the                 *
 //total wholesale value of the entire inventory                        *
 //**********************************************************************
-double Inventory::totalWholesale() {
-    double total = 0;
-    for (int i = 0; i < SIZE; ++i) {
-        total += inventory[i]->getWholesale();
+long long Inventory::totalWholesale() {
+    long long total = 0;
+    for (int i = 0; i < currentSize; ++i) {
+        total += (inventory[i]->getWholesale())*(inventory[i]->getQuantity());
     }
     return total;
 }
