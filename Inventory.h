@@ -29,9 +29,9 @@ public:
     void sortByCost();
     void sortByDate();
     friend ostream &operator<<(ostream &, const Inventory &);
-    double totalWholesale();
+    long long totalWholesale();
     
-    double totalRetail() { return totalWholesale() * retailmarkup; }
+    long long totalRetail() { return totalWholesale() * retailmarkup; }
     Book *operator[] (int index) { return inventory[index]; }
     //To throw exceptions:
     class InvalidFile {};
