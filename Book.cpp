@@ -54,7 +54,7 @@ void Book::setupBook(string a)
 	quantity = atoi(temp.substr(0, temp.find('\t')).c_str());
 }
 
-ostream& operator<<(ostream& out, Book &thi)
+ostream& operator<<(ostream& out, const Book &thi)
 //Printing the Book to the file
 //and printing the Book to standard output
 {
