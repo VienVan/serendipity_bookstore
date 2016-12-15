@@ -24,7 +24,7 @@ public:
 	friend bool operator<(const Date &, const Date &);
 	friend bool operator>=(const Date &, const Date &);
 	friend bool operator<=(const Date &, const Date &);
-	friend ostream& operator<< (ostream &, Date &);
+	friend ostream& operator<< (ostream &, const Date &);
     friend istream& operator>> (istream &, Date &);
 };
 
