@@ -4,6 +4,7 @@
 #include <string>
 #include "CashierModule.h"
 #include <iomanip>
+#include <cctype>
 
 using namespace std;
 
