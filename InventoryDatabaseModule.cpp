@@ -72,7 +72,6 @@ void InventoryDatabaseModule::userInteraction()
 				cout << "Enter the current date in MM/DD/YYYY format. e.g. 04/03/1990: ";
 				getline(cin, temp);
 				try{
-					Date d = Date(temp);
 					build.setDate(Date(temp));
 				}
 				catch (...)
@@ -82,9 +81,9 @@ void InventoryDatabaseModule::userInteraction()
 
 				cout << "Enter the quantity of books to add: ";
 				getline(cin, temp);
-				int t = atoi(temp.c_str());
+				int t = stoi(temp);
 				if (t > 0)
-					build.setQuantity(atoi(temp.c_str()));
+					build.setQuantity(stoi(temp));
 				else
 					dontadd = true;
 
@@ -126,48 +125,44 @@ void InventoryDatabaseModule::userInteraction()
 							<< "8. Return to Inventory Database Module" << endl
 							<< "Enter Your Choice: ";
 						getline(cin, choice2);
-						switch (atoi(choice2.c_str()))
+						cout << "Your book currently holds the data values: " << endl << *build << endl;
+						switch (stoi(choice2))
 						{
 						case 1:
 						{
-							cout << "Your book currently holds the data values: " << endl << *build << endl;
+					
 							cout << "Enter a new title: ";
 							getline(cin, temp);
 							build->setTitle(temp);
 						}break;
 						case 2:
 						{
-							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new author: ";
 							getline(cin, temp);
 							build->setAuthor(temp);
 						}break;
 						case 3:
 						{
-							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new ISBN: ";
 							getline(cin, temp);
 							build->setISBN(temp);
 						}break;
 						case 4:
 						{
-							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new publisher: ";
 							getline(cin, temp);
 							build->setPublisher(temp);
 						}break;
 						case 5:
 						{
-							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new date in the format MM/DD/YYYY e.g. 04/05/1998: ";
 							getline(cin, temp);
 							try{
-								Date d = Date(temp);
 								build->setDate(Date(temp));
 							}
-							catch (...)
+							catch (string ErrorCode)
 							{
-								cout << "INVALID VALUE" << endl;
+								cout << ErrorCode << endl;
 							}
 						}break;
 						case 6:
@@ -175,9 +170,9 @@ void InventoryDatabaseModule::userInteraction()
 							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new quantity: ";
 							getline(cin, temp);
-							int t = atoi(temp.c_str());
+							int t = stoi(temp);
 							if (t > 0)
-								build->setQuantity(atoi(temp.c_str()));
+								build->setQuantity(stoi(temp));
 							else
 								cout << "INVALID VALUE" << endl;
 						}break;
@@ -186,16 +181,16 @@ void InventoryDatabaseModule::userInteraction()
 							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new wholesale value: ";
 							getline(cin, temp);
-							int t = atoi(temp.c_str());
+							int t = stoi(temp);
 							if (t > 0)
-								build->setWholesale(atoi(temp.c_str()));
+								build->setWholesale(stoi(temp.c_str));
 							else
 								cout << "INVALID VALUE" << endl;
 						}break;
 						case 8:{ }break;
 						default:{ cout << endl << "INPUT ERROR" << endl; }
 						}
-					} while (atoi(choice2.c_str()) != 8);
+					} while (stoi(choice2) != 8);
 				}
 				else
 					cout <<  endl << "Your title could not be found." << endl;
@@ -215,7 +210,7 @@ void InventoryDatabaseModule::userInteraction()
 			case 5:{}break;
 			default:{ cout << endl << "INPUT ERROR" << endl; }
 		}
-	} while (atoi(choice.c_str()) != 5);
+	} while (stoi(choice) != 5);
 }
 
 void InventoryDatabaseModule::addBook(Book b)
