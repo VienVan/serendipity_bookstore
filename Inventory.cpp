@@ -60,7 +60,7 @@ void Inventory::pullInventoryFromFile(string filepath) {
 			getline(inputFile, temp);
 			inventory[currentSize]->setupBook(temp);
 			currentSize++;
-			if (inputFile.peek() == 'EOF')
+			if (inputFile.eof())
 			{
 				break;
 			}
