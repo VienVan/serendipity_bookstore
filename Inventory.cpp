@@ -118,18 +118,11 @@ long long Inventory::totalWholesale() {
 //********************************************************************************
 int Inventory::searchTitle(string title) {
     int index = -1;
-    sortByTitle();
-    int min = 0, max = currentSize - 1, midpoint = 0;
-    while (min <= max && index == -1) {
-        midpoint = min + (max - min)/2;
-        if (title == inventory[midpoint]->getTitle()) {
-            index = midpoint;
-        }
-        else if (title < inventory[midpoint]->getTitle()) {
-            max = midpoint - 1;
-        }
-        else { //if (title > inventory[midpoint]->getTitle())
-            min = midpoint + 1;
+    bool isFound = false;
+    for (int i = 0; i < currentSize && !isFound; i++) {
+        if (inventory[i]->getTitle() == title) {
+            index = i;
+            isFound = true;
         }
     }
     return index;
