@@ -11,7 +11,7 @@ void CashierModule::userInteraction()
 {
 	// local variables
     bool wantToContinue = false;
-    char y;
+    char choice;
 	// loop for user interaction
     do
     {
@@ -22,13 +22,10 @@ void CashierModule::userInteraction()
         cout << "Quantity: " << endl;
         cin  >> quantity;
 		// ask if user wants to continue
-        cout << "Continue? y or n: ";
-        cin  >> y;
+        cout << "Continue? Y/N: ";
+        cin  >> choice;
         cin.ignore();
-        if(y == 'y' || y == 'Y')
-        {
-            wantToContinue = true;
-        }
+        wantToContinue = toupper(choice) == 'Y';
 		// check if book exists
         if(inv->searchTitle(title) != -1)
         {
