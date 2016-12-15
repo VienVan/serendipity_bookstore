@@ -52,10 +52,7 @@ void Inventory::pullInventoryFromFile(string filepath) {
 	ifstream inputFile;
 	string temp;
 	inputFile.open(filepath);
-	if (!inputFile)
-	{
-		cout << "FILE ERROR" << endl;
-	}
+	if (inputFile.fail()) throw InvalidFile();
 	else
 	{
 		while (inputFile)
