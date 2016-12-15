@@ -17,7 +17,7 @@ int main()
 	getline(cin, filepath);
 	Module *runner = nullptr;
     try {
-        runner = new ControlModule("books.txt");
+        runner = new ControlModule(filepath);
         runner->userInteraction();
         delete runner;
         runner = nullptr;
