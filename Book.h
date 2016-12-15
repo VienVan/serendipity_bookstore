@@ -21,7 +21,7 @@ public:
 	Book() {/*retailmarkup = 1.3; salestax = 1.0875; */}
 	void setupBook(string a);
 	Book(string a, string t, string i, string p, int d, int m, int y, int q, double r);
-	friend ostream& operator<< (ostream &, Book &);
+	friend ostream& operator<< (ostream &, const Book &);
 	friend istream& operator>> (istream &, Book &);
 	string getAuthor() { return author; }
 	string getTitle() { return title; }
