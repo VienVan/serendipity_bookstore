@@ -15,16 +15,12 @@ int main()
 	string filepath;
 	cout << "Please enter the path to the inventory file:\n";
 	getline(cin, filepath);
-	Module *runner = nullptr;
-    try {
-        runner = new ControlModule(filepath);
-        runner->userInteraction();
-        delete runner;
-        runner = nullptr;
+	try {
+        ControlModule runner(filepath);
+        runner.userInteraction();
     }
     catch (Inventory::InvalidFile) {
         cout << "ERROR: Could not open file.\n";
-        if (runner != nullptr) delete runner;
     }
     
     return 0;
