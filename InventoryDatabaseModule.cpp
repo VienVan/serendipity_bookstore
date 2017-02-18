@@ -17,7 +17,7 @@ void InventoryDatabaseModule::userInteraction()
 		getline(cin, choice);
 
 		string temp;
-		switch (atoi(choice.c_str()))
+		switch (stoi(choice))
 		{
 			case 1:
 			{
@@ -183,7 +183,7 @@ void InventoryDatabaseModule::userInteraction()
 							getline(cin, temp);
 							int t = stoi(temp);
 							if (t > 0)
-								build->setWholesale(stoi(temp.c_str));
+								build->setWholesale(stoi(temp));
 							else
 								cout << "INVALID VALUE" << endl;
 						}break;
