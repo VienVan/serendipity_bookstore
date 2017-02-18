@@ -90,7 +90,7 @@ istream& operator>>(istream& in, Book&thi)
 //This function accepts and int (index) variable and prints                *
 //out the corresponding book in the format used when reading the file      *
 //**************************************************************************
-ostream &Book::printBook(ostream & out) {
+ostream &Book::printBook(ostream &out) {
     out << title << '\t'
     << ISBN << '\t'
     << author << '\t'
