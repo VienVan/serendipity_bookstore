@@ -66,7 +66,7 @@ bool operator<=(const Date &thi, const Date &tha)
 	return operator==(thi, tha) || operator<(thi, tha);
 }
 
-ostream& operator<<(ostream& out, Date &date)
+ostream& operator<<(ostream& out, const Date &date)
 //For printing the Date to standard output
 {
     out << right <<setfill('0') << setw(2) << date.month << '/' << setfill('0') << setw(2) << date.day << '/' << date.year;
