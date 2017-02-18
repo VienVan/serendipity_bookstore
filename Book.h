@@ -38,8 +38,7 @@ public:
 	void setWholesale(double w) { wholesale = w; }
 	void setPublisher(string p) { publisher = p;}
 	void setDate(Date d) { date = d; }
-    class Inventory;
-    ostream &printBook(ostream &);
+    ostream &printBook(ostream & out);
 };
 
 
