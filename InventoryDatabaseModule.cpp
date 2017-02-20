@@ -181,7 +181,7 @@ void InventoryDatabaseModule::userInteraction()
 							cout << "Your book currently holds the data values: " << endl << *build << endl;
 							cout << "Enter a new wholesale value: ";
 							getline(cin, temp);
-							int t = stoi(temp);
+							double t = stoi(temp);
 							if (t > 0)
 								build->setWholesale(stoi(temp));
 							else
